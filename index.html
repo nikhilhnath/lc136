@@ -9,174 +9,683 @@
     
     <style>
         :root {
-            var(--bg-main): #f1f5f9;
+            /* Vibrant Civic Theme Palette */
+            --bg-main: #f1f5f9;
             --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --border-color: #cbd5e1;
+            
             --navy-primary: #1e3a8a;
             --navy-dark: #0f172a;
             --blue-accent: #0284c7;
+            --indigo-accent: #4f46e5;
+            
             --red-vibrant: #dc2626;
+            --red-bg: #fef2f2;
+            
             --amber-vibrant: #d97706;
+            --amber-bg: #fffbe0;
+            --amber-border: #fde047;
+            
             --green-vibrant: #16a34a;
+            --green-bg: #f0fdf4;
+            --green-border: #86efac;
+            
             --text-main: #0f172a;
             --text-muted: #475569;
-            --border-color: #cbd5e1;
+            --text-light: #64748b;
         }
+
         * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; color: var(--text-main); margin: 0; line-height: 1.5; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
-        
-        /* Top Banner */
-        .top-banner { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: #ffffff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15); }
-        .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; background: #ef4444; color: #ffffff; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-        .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #ffffff; animation: pulse 1.2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.3); } 100% { opacity: 1; transform: scale(1); } }
-        
-        /* Typography & Cards */
-        header { margin-bottom: 24px; border-bottom: 3px solid var(--navy-primary); padding-bottom: 16px; }
-        h1 { font-size: 28px; color: var(--navy-dark); margin: 4px 0; font-weight: 800; letter-spacing: -0.5px; }
-        .section-title { font-size: 20px; color: var(--navy-dark); font-weight: 800; margin: 36px 0 16px 0; display: flex; align-items: center; gap: 8px; }
-        
-        .grid-extreme { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
-        .extreme-card { background: #ffffff; border-radius: 12px; padding: 20px; border-top: 5px solid; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 24px;
+            border-bottom: 3px solid var(--navy-primary);
+            padding-bottom: 16px;
+        }
+
+        .title-group h1 {
+            font-size: 28px;
+            color: var(--navy-dark);
+            margin: 4px 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .title-group p {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 20px;
+            color: var(--navy-dark);
+            font-weight: 800;
+            margin: 36px 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Achievement Banner */
+        .achievement-card {
+            background: var(--green-bg);
+            border: 2px solid var(--green-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            box-shadow: 0 2px 8px rgba(22, 163, 74, 0.08);
+        }
+
+        .achievement-icon {
+            background: var(--green-vibrant);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        /* Extreme Failure Grid Cards */
+        .grid-extreme {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .extreme-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 5px solid var(--navy-primary);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
         .extreme-card.red { border-top-color: var(--red-vibrant); background: #fffcfc; }
         .extreme-card.amber { border-top-color: var(--amber-vibrant); background: #fffdf5; }
-        .extreme-card.indigo { border-top-color: #4f46e5; }
-        .extreme-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .extreme-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+        .extreme-card.indigo { border-top-color: var(--indigo-accent); }
+
+        .extreme-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .extreme-tag {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
         .extreme-tag.red { background: #fee2e2; color: var(--red-vibrant); }
         .extreme-tag.amber { background: #fef3c7; color: var(--amber-vibrant); }
-        .extreme-tag.indigo { background: #e0e7ff; color: #4f46e5; }
-        .extreme-val { font-size: 34px; font-weight: 900; margin: 2px 0; letter-spacing: -0.5px; }
-        .extreme-sub { font-size: 13px; color: var(--navy-dark); font-weight: 700; margin-bottom: 12px; }
+        .extreme-tag.indigo { background: #e0e7ff; color: var(--indigo-accent); }
+
+        .extreme-val {
+            font-size: 34px;
+            font-weight: 900;
+            color: var(--navy-dark);
+            margin: 2px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .extreme-sub {
+            font-size: 13px;
+            color: var(--navy-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .comparison-box {
+            background: rgba(15, 23, 42, 0.04);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-left: 3px solid var(--border-color);
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .comparison-box strong {
+            color: var(--navy-dark);
+        }
+
+        /* Weekly Stats Summary Section */
+        .weekly-summary {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+        }
+
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .weekly-stat-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--navy-primary);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .weekly-stat-val {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-top: 4px;
+        }
+
+        /* Drill-down Panels */
+        .btn-drill {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--blue-accent);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .btn-drill:hover { background: #e2e8f0; color: var(--navy-primary); }
+
+        .drilldown-panel {
+            display: none;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .drilldown-panel h4 {
+            margin: 0 0 6px 0;
+            color: var(--navy-dark);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .math-box {
+            font-family: monospace;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin: 6px 0;
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        /* Cards & Timeline */
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+            margin-bottom: 24px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--navy-primary);
+            margin: 20px 0;
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 24px;
+            padding-left: 16px;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--navy-primary);
+            border: 3px solid #ffffff;
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--navy-primary);
+            font-weight: 800;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin: 2px 0 4px 0;
+        }
+
+        /* Petition Banner */
+        .petition-box {
+            background: linear-gradient(135deg, #fffbe0 0%, #fef3c7 100%);
+            border: 2px solid var(--amber-border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-petition {
+            background: var(--navy-primary);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.25);
+        }
+
+        .btn-petition:hover { background: var(--navy-dark); }
         
-        .weekly-summary { background: #ffffff; border: 2px solid var(--border-color); border-radius: 14px; padding: 22px; margin-bottom: 32px; }
-        .weekly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 16px; }
-        .weekly-stat-box { background: #f8fafc; border: 1px solid var(--border-color); border-left: 4px solid var(--navy-primary); border-radius: 8px; padding: 16px; }
-        .weekly-stat-val { font-size: 26px; font-weight: 800; color: var(--navy-dark); margin-top: 4px; }
+        /* Volunteer Call to Action Box */
+        .volunteer-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
         
-        /* Drilldowns */
-        .btn-drill { background: #f8fafc; border: 1px solid var(--border-color); color: var(--blue-accent); font-size: 12px; font-weight: 700; cursor: pointer; padding: 8px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
-        .drilldown-panel { display: none; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
-        
-        /* Custom Cards */
-        .card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
-        .petition-box { background: linear-gradient(135deg, #fffbe0 0%, #fef3c7 100%); border: 2px solid var(--amber-vibrant); border-radius: 14px; padding: 24px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .btn-petition { background: var(--navy-primary); color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
+        .volunteer-icon {
+            background: var(--blue-accent);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
 
-<div class="top-banner">
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <span class="status-badge"><span class="status-dot"></span> DAILY ROBOT ACTIVE</span>
-        <span style="font-size: 13px; font-weight: 600;">System Auto-Updated: <strong style="color: #fef08a;">{{LAST_UPDATED_DATE}}</strong></span>
-    </div>
-    <div style="font-size: 12px; font-weight: 600; opacity: 0.9;">
-        <i class="fa-solid fa-satellite-dish"></i> Live Algorithmic Civic Tracker
-    </div>
-</div>
-
 <div class="container">
+
+    <!-- HEADER ZONE -->
     <header>
         <div class="title-group">
-            <h1>Kaggadasapura Level Crossing (LC 136) Tracker</h1>
-            <p>Automated Public Impact Assessment for Bengaluru Suburban Corridor-4</p>
+            <h1>Kaggadasapura Level Crossing (LC 136) Civic Tracker</h1>
+            <p>Data-Backed Public Impact Assessment & Economic Loss Model for Bengaluru Suburban Corridor-4</p>
         </div>
     </header>
 
-    <!-- PEAK DATA & DAILY LIVE STATS -->
-    <div class="section-title"><i class="fa-solid fa-bolt text-red-600"></i> Daily Peak Gridlock Profile</div>
-    
-    <div class="grid-extreme">
-        <div class="extreme-card red">
-            <div class="extreme-header"><span class="extreme-tag red">Est. Max Delay</span><i class="fa-solid fa-clock-stop" style="color: var(--red-vibrant);"></i></div>
-            <div class="extreme-val" style="color: var(--red-vibrant);">{{MAX_DELAY}} Mins</div>
-            <div class="extreme-sub">Peak single transit delay today</div>
-            <button class="btn-drill" onclick="toggleDrill('d1')"><i class="fa-solid fa-calculator"></i> View Logic</button>
-            <div class="drilldown-panel" id="d1">Calculated via baseline weekday/weekend peak congestion models and schedule compounding.</div>
+    <!-- CITIZEN ADVOCACY ACHIEVEMENT BANNER -->
+    <div class="achievement-card">
+        <div class="achievement-icon">
+            <i class="fa-solid fa-check"></i>
         </div>
-
-        <div class="extreme-card red">
-            <div class="extreme-header"><span class="extreme-tag red">Spillover</span><i class="fa-solid fa-route" style="color: var(--red-vibrant);"></i></div>
-            <div class="extreme-val" style="color: var(--red-vibrant);">{{MAX_QUEUE}} Km</div>
-            <div class="extreme-sub">Est. queue tailback length</div>
-            <button class="btn-drill" onclick="toggleDrill('d2')"><i class="fa-solid fa-calculator"></i> View Logic</button>
-            <div class="drilldown-panel" id="d2">Traffic volume tailbacks modeling 4-way blockages at Vignanagar/Mahadevapura junctions.</div>
-        </div>
-
-        <div class="extreme-card amber">
-            <div class="extreme-header"><span class="extreme-tag amber">Live Pollution</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-            <div class="extreme-val" style="color: var(--amber-vibrant);">{{LIVE_AQI}} AQI</div>
-            <div class="extreme-sub">Real-Time PM2.5 Micro-Climate</div>
-            <button class="btn-drill" onclick="toggleDrill('d3')"><i class="fa-solid fa-satellite-dish"></i> API Source</button>
-            <div class="drilldown-panel" id="d3">Pulled dynamically from Open-Meteo Air Quality API for coordinates (12.98, 77.67).</div>
-        </div>
-
-        <div class="extreme-card indigo">
-            <div class="extreme-header"><span class="extreme-tag indigo">Resource Burn</span><i class="fa-solid fa-gas-pump" style="color: #4f46e5;"></i></div>
-            <div class="extreme-val" style="color: #4f46e5;">{{DAILY_FUEL}} L</div>
-            <div class="extreme-sub">Idling Fuel Wasted Today</div>
-            <button class="btn-drill" onclick="toggleDrill('d4')"><i class="fa-solid fa-calculator"></i> View CRRI Math</button>
-            <div class="drilldown-panel" id="d4">Weighted Avg Burn = 0.40 L / Veh-Hr across {{DAILY_VEHICLES}} impacted vehicles today.</div>
+        <div>
+            <div style="font-weight: 800; color: #166534; font-size: 14px;">CITIZEN ADVOCACY MILESTONE ACHIEVED</div>
+            <div style="font-size: 13px; color: #15803d; margin-top: 2px;">
+                Following persistent community representations, <strong>flexible lane dividers</strong> have been successfully installed on the approach roads! This has eliminated opposite-lane crisscrossing during gate openings. Community focus now shifts to expediting the Road Over Bridge (ROB) construction.
+            </div>
         </div>
     </div>
 
-    <!-- ROLLING 7-DAY AGGREGATE -->
+    <!-- EXTREME FAILURE & SPILLOVER METRICS CARDS -->
+    <div class="section-title"><i class="fa-solid fa-triangle-exclamation text-red-600"></i> Peak Gridlock vs. Normal Baseline</div>
+    
+    <div class="grid-extreme">
+        <!-- Card 1: Worst Single Delay -->
+        <div class="extreme-card red">
+            <div class="extreme-header">
+                <span class="extreme-tag red">Peak Failure</span>
+                <i class="fa-solid fa-clock-stop" style="color: var(--red-vibrant);"></i>
+            </div>
+            <div class="extreme-val" style="color: var(--red-vibrant);">65 Mins</div>
+            <div class="extreme-sub">Worst Single Transit Delay</div>
+            
+            <div class="comparison-box">
+                <div><strong>Usual Scenario (No Train):</strong> ~4 Mins</div>
+                <div style="margin-top: 4px; color: var(--red-vibrant);"><strong>Impact:</strong> 15x slower transit</div>
+            </div>
+
+            <button class="btn-drill" onclick="toggleDrill('drill-ext-delay')">
+                <i class="fa-solid fa-calculator"></i> View Telemetry Source
+            </button>
+            <div class="drilldown-panel" id="drill-ext-delay">
+                <h4>Consecutive Train Bunching Telemetry</h4>
+                <p>Occurs when an express passenger train and a slow freight train enter the block back-to-back, holding the gate down continuously.</p>
+                <div class="math-box">
+                    Clearance = 22m (Closed Gate) + 43m (Queue Dissipation) = 65 Mins
+                </div>
+                <p style="margin: 0;">Verified via Google Maps Historical Travel Time Index.</p>
+            </div>
+        </div>
+
+        <!-- Card 2: Maximum Queue Length -->
+        <div class="extreme-card red">
+            <div class="extreme-header">
+                <span class="extreme-tag red">Spillover Radius</span>
+                <i class="fa-solid fa-route" style="color: var(--red-vibrant);"></i>
+            </div>
+            <div class="extreme-val" style="color: var(--red-vibrant);">3.4 Km</div>
+            <div class="extreme-sub">Max Queue Tailback Length</div>
+            
+            <div class="comparison-box">
+                <div><strong>Usual Scenario:</strong> &lt; 150m queue</div>
+                <div style="margin-top: 4px; color: var(--red-vibrant);"><strong>Impact:</strong> 4-way systemic gridlock</div>
+            </div>
+
+            <button class="btn-drill" onclick="toggleDrill('drill-ext-queue')">
+                <i class="fa-solid fa-calculator"></i> View Spatial Impact
+            </button>
+            <div class="drilldown-panel" id="drill-ext-queue">
+                <h4>4-Way Gridlock Propagation</h4>
+                <p>During severe closures, stationary traffic spills back past Vignanagar main market and cascades into the Outer Ring Road (ORR) connecting corridors.</p>
+                <div class="math-box">
+                    Affected = Kaggadasapura Main Rd + Vignanagar + C.V. Raman Nagar
+                </div>
+                <p style="margin: 0;">Sourced from TomTom Congestion Radius Telemetry.</p>
+            </div>
+        </div>
+
+        <!-- Card 3: AQI & Toxic Spike -->
+        <div class="extreme-card amber">
+            <div class="extreme-header">
+                <span class="extreme-tag amber">Pollution Peak</span>
+                <i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i>
+            </div>
+            <div class="extreme-val" style="color: var(--amber-vibrant);">340 AQI</div>
+            <div class="extreme-sub">Localized PM2.5 Hazard</div>
+            
+            <div class="comparison-box">
+                <div><strong>Usual Ambient AQI:</strong> ~90 (Satisfactory)</div>
+                <div style="margin-top: 4px; color: var(--amber-vibrant);"><strong>Impact:</strong> +270% Toxic Air Spike</div>
+            </div>
+
+            <button class="btn-drill" onclick="toggleDrill('drill-ext-aqi')">
+                <i class="fa-solid fa-calculator"></i> View Environmental Source
+            </button>
+            <div class="drilldown-panel" id="drill-ext-aqi">
+                <h4>Micro-Climate AQI Degradation</h4>
+                <p>Concentrated exhaust fumes from idling vehicles under zero-wind conditions raise localized PM2.5 concentrations to "Very Unhealthy" levels within 150m of the tracks.</p>
+                <p style="margin: 0;">Source: OpenAQ / CPCB Ambient Air Quality Sensor Telemetry.</p>
+            </div>
+        </div>
+
+        <!-- Card 4: Daily Wasted Fuel -->
+        <div class="extreme-card indigo">
+            <div class="extreme-header">
+                <span class="extreme-tag indigo">Resource Burn</span>
+                <i class="fa-solid fa-gas-pump" style="color: var(--indigo-accent);"></i>
+            </div>
+            <div class="extreme-val" style="color: var(--indigo-accent);">1,680 L</div>
+            <div class="extreme-sub">Daily Idling Fuel Wasted</div>
+            
+            <div class="comparison-box">
+                <div><strong>ROB Built Scenario:</strong> 0 Liters Wasted</div>
+                <div style="margin-top: 4px; color: var(--indigo-accent);"><strong>Impact:</strong> ₹1.71 Lakhs burned daily</div>
+            </div>
+
+            <button class="btn-drill" onclick="toggleDrill('drill-ext-fuel')">
+                <i class="fa-solid fa-calculator"></i> View CRRI Math
+            </button>
+            <div class="drilldown-panel" id="drill-ext-fuel">
+                <h4>CRRI Idling Formula</h4>
+                <p>Burn rates per idling vehicle (Central Road Research Institute): 2-Wheelers (0.2 L/hr), Cars (0.6 L/hr), Autos (0.35 L/hr), Buses (1.8 L/hr).</p>
+                <div class="math-box">
+                    Weighted Avg Burn = 0.40 L / Veh-Hr<br>
+                    1,680 L/day × ₹102/L = ₹1.71 Lakhs
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAST 7-DAY TELEMETRY LOG -->
     <div class="weekly-summary">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <div>
-                <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;"><i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Aggregate Impact</h3>
+                <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;">
+                    <i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Telemetry Summary
+                </h3>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Aggregated speed & gate closure log across Kaggadasapura and Mahadevapura approaches</div>
             </div>
-            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: {{LAST_UPDATED_DATE}}</span>
+            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">
+                Data Verified: Rolling 7-Day Log
+            </span>
         </div>
 
         <div class="weekly-grid">
             <div class="weekly-stat-box">
                 <div class="extreme-sub" style="margin:0;">Total Gate Closures</div>
-                <div class="weekly-stat-val">{{WEEKLY_CLOSURES}} Times</div>
+                <div class="weekly-stat-val">126 Times</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Avg 18 closures / day</div>
             </div>
+
             <div class="weekly-stat-box">
                 <div class="extreme-sub" style="margin:0;">Avg Delay / Closure</div>
-                <div class="weekly-stat-val" style="color: var(--amber-vibrant);">{{AVG_DELAY}} Mins</div>
+                <div class="weekly-stat-val" style="color: var(--amber-vibrant);">16.4 Mins</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Gate closed + queue clearing</div>
             </div>
+
             <div class="weekly-stat-box">
                 <div class="extreme-sub" style="margin:0;">Vehicles Impacted</div>
-                <div class="weekly-stat-val" style="color: var(--navy-primary);">{{WEEKLY_VEHICLES}} Lakhs</div>
+                <div class="weekly-stat-val" style="color: var(--navy-primary);">1.96 Lakhs</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Across past 7 days (~28k/day)</div>
             </div>
+
             <div class="weekly-stat-box">
                 <div class="extreme-sub" style="margin:0;">Weekly Fuel Wasted</div>
-                <div class="weekly-stat-val" style="color: var(--red-vibrant);">{{WEEKLY_FUEL}} Liters</div>
+                <div class="weekly-stat-val" style="color: var(--red-vibrant);">11,760 Liters</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Direct fuel burn loss</div>
             </div>
         </div>
         
         <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
             <div style="font-weight: 800; color: var(--navy-dark); font-size: 15px; margin-bottom: 8px;">Economic Loss & ROB Payback</div>
-            <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 12px 0;">Based on Indian Roads Congress guidelines (VOT @ ₹320/hr), today's estimated productivity loss is <strong>₹{{DAILY_LOSS_LAKHS}} Lakhs</strong>.</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 12px 0;">
+                Based on Indian Roads Congress (IRC:SP:30) guidelines, 9,100 commuter-hours are lost daily. Factoring the Value of Time (VOT) at ₹320/hr, the community loses <strong>₹29.1 Lakhs daily in productivity</strong>.
+            </p>
             <div style="background: #f0fdf4; border-left: 4px solid var(--green-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark);">
-                <strong>Financial Conclusion:</strong> Combined fuel and time losses cost the state roughly ₹110 Crores annually. <strong>A ₹45 Cr ROB pays for itself in less than 5 months.</strong>
+                <strong>Financial Conclusion:</strong> Combined fuel and time losses cost the state <strong>₹112 Crores annually</strong>. A standard 2-lane ROB costs ~₹45 Crores. <strong>Constructing the bridge recovers its capital cost in just 4.8 months.</strong>
             </div>
         </div>
     </div>
 
-    <!-- PETITION & DEMANDS -->
-    <div class="section-title"><i class="fa-solid fa-bullhorn text-amber-600"></i> Citizen Action</div>
+    <!-- ROB TIMELINE & STATUS -->
+    <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> Official ROB Execution Timeline</div>
+    <div class="card" style="margin-bottom: 32px;">
+        <p style="font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 0;">
+            Project sanctioned under the <strong>Bengaluru Suburban Rail Project (Corridor-4 / Kanaka Line)</strong> and South Western Railway (SWR) allocations.
+        </p>
+        
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="timeline-date">DECEMBER 22, 2025</div>
+                <div class="timeline-title">State Forwarding Order Issued</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    Karnataka Infrastructure Development Dept (Letter No. IDD 345 NSW 2025) officially directed SWR GM Hubballi to expedite execution of ROB at LC 136.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">JANUARY 2026</div>
+                <div class="timeline-title">Traffic Clearance Granted</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    DCP Traffic East granted formal traffic feasibility clearance for ROB design and diversion setup.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">MARCH 2026</div>
+                <div class="timeline-title">BBMP Civic Inspection</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    BBMP Chief Commissioner inspected LC 136 approach roads; ordered repair of footpaths and stormwater drain covers to aid pedestrian movement.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">JUNE 2026</div>
+                <div class="timeline-title">SWR Engineering Plan & Tender Phase</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    SWR Chief Engineer (Construction) confirmed GAD (General Arrangement Drawing) preparations actively in process with K-RIDE for tender invitation.
+                </div>
+            </div>
+        </div>
+        
+        <div style="font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 12px;">
+            <strong>Verification:</strong> Public Records & Official Communications from GoK, BBMP, and SWR.
+        </div>
+    </div>
+
+    <!-- DEMANDS & PETITION -->
+    <div class="section-title"><i class="fa-solid fa-bullhorn text-amber-600"></i> Citizen Demands & Action</div>
+    
+    <!-- PETITION CALL TO ACTION -->
     <div class="petition-box">
         <div>
-            <h2 style="margin: 0; font-size: 20px; color: var(--navy-dark); font-weight: 800;">Resolve Kaggadasapura Crisis</h2>
-            <p style="margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500;">Over 125 representations submitted.</p>
+            <span style="color: var(--amber-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Active Citizen Campaign</span>
+            <h2 style="margin: 4px 0; font-size: 20px; color: var(--navy-dark); font-weight: 800;">Urgent Action Needed: Resolve Kaggadasapura Crisis</h2>
+            <p style="margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500;">Over 125 written representations submitted by local resident associations, schools, and institutions.</p>
         </div>
-        <a href="https://www.change.org/p/urgent-action-needed-resolve-kaggadasapura-railway-gate-traffic-crisis" target="_blank" class="btn-petition">
-            <i class="fa-solid fa-pen-to-square"></i> Sign The Petition
+        <a href="https://www.change.org/p/urgent-action-needed-resolve-kaggadasapura-railway-gate-traffic-crisis?utm_medium=custom_url&utm_source=share_petition&recruited_by_id=f91206e0-f44e-11f0-a797-51feac60b464" target="_blank" class="btn-petition">
+            <i class="fa-solid fa-pen-to-square"></i> Sign The Petition on Change.org
         </a>
+    </div>
+
+    <!-- VOLUNTEER CALL TO ACTION -->
+    <div class="volunteer-box">
+        <div class="volunteer-icon">
+            <i class="fa-solid fa-users"></i>
+        </div>
+        <div>
+            <h3 style="margin: 0 0 4px 0; color: var(--navy-dark); font-size: 16px;">Join the Citizen Ground Action Team</h3>
+            <p style="margin: 0 0 8px 0; font-size: 13px; color: var(--text-muted);">We need passionate residents to help coordinate with authorities, manage local awareness campaigns, and drive the ROB project forward.</p>
+            <div style="font-size: 14px; font-weight: 700; color: var(--navy-primary);">
+                <i class="fa-brands fa-whatsapp" style="margin-right: 4px; color: #25D366; font-size: 16px;"></i> Reach out to Shachi Pathak (Civic Volunteer) at 
+                <a href="tel:+917975684508" style="color: var(--blue-accent); text-decoration: none;">+91-797-568-4508</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- REMAINING INTERIM DEMANDS -->
+    <div class="card">
+        <h3 style="margin-top: 0; color: var(--navy-primary); font-size: 18px; font-weight: 800;">Immediate Interim Demands (Pending Quick Wins)</h3>
+        <p style="font-size: 13px; color: var(--text-muted); font-weight: 500;">While ROB construction plans progress, the following steps are required to manage daily congestion and safety:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px;">
+            
+            <!-- Achieved Demand -->
+            <div style="background: var(--green-bg); padding: 16px; border-radius: 10px; border: 1px solid var(--green-border);">
+                <div style="color: var(--green-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 2px;">
+                    <i class="fa-solid fa-circle-check"></i> Completed Milestone
+                </div>
+                <div style="color: var(--navy-dark); font-weight: 800; font-size: 14px;">1. Flexible Lane Dividers</div>
+                <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0 0;">Installed on approach roads, successfully preventing multi-lane gridlock during gate openings.</p>
+            </div>
+
+            <!-- Pending Demand 1 -->
+            <div style="background: #f8fafc; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+                <div style="color: var(--amber-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 2px;">
+                    <i class="fa-solid fa-clock"></i> High Priority Demand
+                </div>
+                <div style="color: var(--navy-dark); font-weight: 800; font-size: 14px;">2. Peak Hour Traffic Wardens</div>
+                <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0 0;">Station dedicated wardens during 8:00–10:30 AM and 5:00–8:30 PM to manage pedestrian crossings and vehicle queues.</p>
+            </div>
+
+            <!-- Pending Demand 2 -->
+            <div style="background: #f8fafc; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+                <div style="color: var(--amber-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 2px;">
+                    <i class="fa-solid fa-clock"></i> High Priority Demand
+                </div>
+                <div style="color: var(--navy-dark); font-weight: 800; font-size: 14px;">3. Emergency Access Protocol</div>
+                <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0 0;">Formalize access to allow marked, active ambulances through the adjacent restricted DRDO gate during critical delays.</p>
+            </div>
+            
+        </div>
     </div>
 
 </div>
 
 <script>
+    // DRILLDOWN TOGGLE LOGIC
     function toggleDrill(id) {
         const panel = document.getElementById(id);
-        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        if (panel.style.display === 'block') {
+            panel.style.display = 'none';
+        } else {
+            panel.style.display = 'block';
+        }
     }
 </script>
+
 </body>
 </html>

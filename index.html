@@ -145,7 +145,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front amber">
                     <div class="extreme-header"><span class="extreme-tag amber">Pollution Peak</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->156<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
+                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->340<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
                     <div class="extreme-sub">Localized PM2.5 Hazard</div>
                     <div class="event-badge" style="background:#fffbe0;"><i class="fa-solid fa-calculator"></i> Algorithmic Estimate</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Environmental Source</button>
@@ -164,7 +164,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front indigo">
                     <div class="extreme-header"><span class="extreme-tag indigo">Resource Burn</span><i class="fa-solid fa-gas-pump" style="color: #4f46e5;"></i></div>
-                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->3,441<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
+                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->1,680<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
                     <div class="extreme-sub">Daily Idling Fuel Wasted</div>
                     <div class="event-badge" style="background:#e0e7ff;"><i class="fa-solid fa-bolt"></i> Live Algorithmic Math</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View CRRI Math</button>
@@ -186,7 +186,7 @@
             <div>
                 <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;"><i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Telemetry Summary</h3>
             </div>
-            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 30, 2026, 02:07 AM IST<!--/LAST_UPDATED--></span>
+            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 29, 2026, 11:59 PM IST<!--/LAST_UPDATED--></span>
         </div>
 
         <div class="weekly-grid">
@@ -196,7 +196,7 @@
                     <div class="weekly-flip-front">
                         <div>
                             <div class="extreme-sub"><i class="fa-solid fa-road-barrier" style="color: var(--navy-primary);"></i> Total Gate Closures</div>
-                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->123<!--/WEEKLY_CLOSURES--> Times</div>
+                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->126<!--/WEEKLY_CLOSURES--> Times</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -266,7 +266,7 @@
         <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
             
             <div style="background: #fef2f2; border: 1px solid #fca5a5; border-left: 4px solid var(--red-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark); margin-bottom: 12px;">
-                <strong style="color: var(--red-vibrant);">Daily Productivity Drain:</strong> Based on IRC:SP:30 guidelines (weighted Value of Time @ ₹320/hr for mixed urban traffic), today's estimated economic loss is <strong>₹<!--DAILY_LOSS_LAKHS-->35.8<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.
+                <strong style="color: var(--red-vibrant);">Daily Productivity Drain:</strong> Based on IRC:SP:30 guidelines (weighted Value of Time @ ₹320/hr for mixed urban traffic), today's estimated economic loss is <strong>₹<!--DAILY_LOSS_LAKHS-->29.1<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.
             </div>
 
             <div style="background: #f0fdf4; border-left: 4px solid var(--green-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark);">
@@ -284,7 +284,7 @@
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
         
-        <!-- Column 1: Next Blockage -->
+        <!-- Column 1: Next Blockage (Dynamic JS Tracker) -->
         <div style="background: #e0e7ff; border: 1px solid #c7d2fe; border-top: 4px solid #4f46e5; border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
                 <i class="fa-solid fa-train-subway" style="font-size: 24px; color: #4f46e5;"></i>
@@ -292,7 +292,7 @@
             </div>
             <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: auto;">
                 Next Scheduled Blockage:<br>
-                <strong style="color: #1e3a8a; font-size: 16px;"><!--NEXT_TRAIN-->[Unscheduled Freight / Night Shunting] (~02:30 AM)<!--/NEXT_TRAIN--></strong>
+                <strong id="next-train-display" style="color: #1e3a8a; font-size: 16px;"><!--NEXT_TRAIN-->Calculating...<!--/NEXT_TRAIN--></strong>
             </div>
             <div style="font-size: 10px; color: #6366f1; margin-top: 16px; line-height: 1.4; background: rgba(79, 70, 229, 0.1); padding: 8px; border-radius: 6px;">
                 <strong>Disclaimer:</strong> Best-effort estimate based on official timetables. Freight slots are statistical placeholders representing average weekly line density. Always observe safety signals at crossing.
@@ -402,5 +402,65 @@
     </div>
 
 </div>
+
+<!-- CLIENT-SIDE DYNAMIC NEXT TRAIN CALCULATOR -->
+<script>
+    function updateNextTrain() {
+        const trains = [
+            {h: 2, m: 30, name: "[Unscheduled Freight / Night Shunting]"},
+            {h: 5, m: 15, name: "Train 06259 - Yesvantpur Hosur Pass"},
+            {h: 6, m: 40, name: "Train 16219 - Chamarajanagar Exp"},
+            {h: 7, m: 15, name: "Train 06525 - KSR Bengaluru Exp"},
+            {h: 8, m: 20, name: "[Unscheduled Freight / Goods Block]"},
+            {h: 9, m: 30, name: "Train 12257 - Kochuveli Garib Rath"},
+            {h: 11, m: 10, name: "Train 11013 - Coimbatore Express"},
+            {h: 12, m: 45, name: "Train 06260 - Hosur Passenger"},
+            {h: 14, m: 0, name: "[Unscheduled Freight / Goods Block]"},
+            {h: 15, m: 20, name: "Train 12677 - Ernakulam Intercity"},
+            {h: 17, m: 30, name: "Train 12678 - Ernakulam Intercity"},
+            {h: 18, m: 15, name: "Train 16529 - Karaikal Express"},
+            {h: 19, m: 15, name: "Train 06526 - KSR Bengaluru Exp"},
+            {h: 20, m: 45, name: "Train 16220 - Tirupati Express"},
+            {h: 22, m: 10, name: "[Unscheduled Freight / Night Shunting]"}
+        ];
+
+        // Fetch exact current hour and minute in IST timezone
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Kolkata',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+        });
+        
+        const parts = formatter.formatToParts(now);
+        let currentHour = 0, currentMinute = 0;
+        parts.forEach(p => {
+            if (p.type === 'hour') currentHour = parseInt(p.value, 10);
+            if (p.type === 'minute') currentMinute = parseInt(p.value, 10);
+        });
+
+        let next = trains[0];
+        for (let t of trains) {
+            if (currentHour < t.h || (currentHour === t.h && currentMinute <= t.m)) {
+                next = t;
+                break;
+            }
+        }
+
+        // Format to 12-hour AM/PM string
+        let period = next.h >= 12 ? 'PM' : 'AM';
+        let hour12 = next.h % 12;
+        if (hour12 === 0) hour12 = 12;
+        let minStr = String(next.m).padStart(2, '0');
+        let timeStr = `${hour12}:${minStr} ${period}`;
+
+        document.getElementById('next-train-display').innerText = `${next.name} (~${timeStr})`;
+    }
+
+    // Run on page load
+    window.onload = updateNextTrain;
+</script>
+
 </body>
 </html>

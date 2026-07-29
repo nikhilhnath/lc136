@@ -73,12 +73,21 @@ except:
 
 # 3. NEXT TRAIN LOGIC (BYPL to HSRA Block)
 trains = [
+    (2, 30, "[Unscheduled Freight / Night Shunting]"),
+    (5, 15, "Train 06259 - Yesvantpur Hosur Pass"),
+    (6, 40, "Train 16219 - Chamarajanagar Exp"),
     (7, 15, "Train 06525 - KSR Bengaluru Exp"),
-    (9, 30, "Train 16219 - Chamarajanagar Exp"),
+    (8, 20, "[Unscheduled Freight / Goods Block]"),
+    (9, 30, "Train 12257 - Kochuveli Garib Rath"),
+    (11, 10, "Train 11013 - Coimbatore Express"),
     (12, 45, "Train 06260 - Hosur Passenger"),
+    (14, 0, "[Unscheduled Freight / Goods Block]"),
+    (15, 20, "Train 12677 - Ernakulam Intercity"),
     (17, 30, "Train 12678 - Ernakulam Intercity"),
+    (18, 15, "Train 16529 - Karaikal Express"),
     (19, 15, "Train 06526 - KSR Bengaluru Exp"),
-    (22, 0, "Freight / Goods Train Passage")
+    (20, 45, "Train 16220 - Tirupati Express"),
+    (22, 10, "[Unscheduled Freight / Night Shunting]")
 ]
 next_train = trains[0] # Default to next morning
 for h, m, name in trains:

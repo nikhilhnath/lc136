@@ -32,4 +32,3 @@ jobs:
           git add index.html memory.json
           git commit -m "Automated 11:59 PM Data Update" || exit 0
           git push
-```

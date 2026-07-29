@@ -22,11 +22,6 @@
         h1 { font-size: 28px; color: var(--navy-dark); margin: 4px 0; font-weight: 800; letter-spacing: -0.5px; }
         .section-title { font-size: 20px; color: var(--navy-dark); font-weight: 800; margin: 32px 0 16px 0; display: flex; align-items: center; gap: 8px; }
 
-        /* Next Train Tracker */
-        .train-tracker { background: #e0e7ff; border-left: 4px solid #4f46e5; padding: 16px 20px; margin-bottom: 24px; border-radius: 8px; display: flex; align-items: center; gap: 16px; color: var(--navy-dark); font-weight: 700; box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1); }
-        .train-tracker-icon { font-size: 24px; color: #4f46e5; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-
         /* 3D Flip Cards - EXTREME METRICS */
         .grid-extreme { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
         .flip-card { background-color: transparent; height: 260px; perspective: 1000px; cursor: pointer; }
@@ -77,7 +72,7 @@
         
         .tap-hint { font-size: 11px; color: var(--blue-accent); font-weight: 700; display: flex; align-items: center; gap: 4px; margin-top: auto; }
 
-        /* Timeline Styles (RESTORED) */
+        /* Timeline Styles */
         .card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); }
         .timeline { position: relative; padding-left: 20px; border-left: 3px solid var(--navy-primary); margin: 20px 0; }
         .timeline-event { position: relative; margin-bottom: 24px; padding-left: 16px; }
@@ -85,10 +80,9 @@
         .timeline-date { font-size: 12px; color: var(--navy-primary); font-weight: 800; }
         .timeline-title { font-size: 16px; font-weight: 800; color: var(--navy-dark); margin: 2px 0 4px 0; }
 
-        /* Petitions & Milestones */
-        .petition-box { background: linear-gradient(135deg, #fffbe0 0%, #fef3c7 100%); border: 2px solid var(--amber-vibrant); border-radius: 14px; padding: 24px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .btn-petition { background: var(--navy-primary); color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
-        .volunteer-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+        /* General UI components */
+        .btn-petition { background: var(--navy-primary); color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; transition: background 0.2s; }
+        .btn-petition:hover { background: var(--navy-dark); }
         .achievement-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 16px 20px; margin-top: 32px; display: flex; align-items: flex-start; gap: 16px; }
     </style>
 </head>
@@ -102,20 +96,10 @@
         </div>
     </header>
 
-    <!-- LIVE NEXT TRAIN TRACKER -->
-    <div class="train-tracker">
-        <i class="fa-solid fa-train-subway train-tracker-icon"></i>
-        <div>
-            <div style="font-size: 11px; color: #4f46e5; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;">Live Schedule Tracker Active</div>
-            <div style="font-size: 15px;">Next Expected Passage: <strong style="color: #1e3a8a;"><!--NEXT_TRAIN-->Train 06525 - KSR Bengaluru Exp (~07:15 AM)<!--/NEXT_TRAIN--></strong></div>
-        </div>
-    </div>
-
     <!-- EXTREME METRICS (FLIP CARDS) -->
     <div class="section-title"><i class="fa-solid fa-triangle-exclamation text-red-600"></i> Peak Gridlock vs. Normal Baseline</div>
     
     <div class="grid-extreme">
-        
         <!-- CARD 1: DELAY -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
@@ -129,7 +113,7 @@
                 <div class="flip-card-back">
                     <h4>Consecutive Train Bunching</h4>
                     <p>Occurs when an express passenger train and a slow freight train enter the block back-to-back.</p>
-                    <div class="math-box">Clearance = 22m (Gate) + 43m (Queue Dissipation) = 65 Mins</div>
+                    <div class="math-box">Clearance = 22m (Gate) + 43m (Queue) = 65 Mins</div>
                     <p style="opacity: 0.8; font-size: 10px;">Verified via Google Maps Travel Time Index.</p>
                     <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
                 </div>
@@ -161,7 +145,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front amber">
                     <div class="extreme-header"><span class="extreme-tag amber">Pollution Peak</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->156<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
+                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->340<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
                     <div class="extreme-sub">Localized PM2.5 Hazard</div>
                     <div class="event-badge" style="background:#fffbe0;"><i class="fa-solid fa-bolt"></i> Live Daily Automated Fetch</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Environmental Source</button>
@@ -180,7 +164,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front indigo">
                     <div class="extreme-header"><span class="extreme-tag indigo">Resource Burn</span><i class="fa-solid fa-gas-pump" style="color: #4f46e5;"></i></div>
-                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->3,441<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
+                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->1,680<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
                     <div class="extreme-sub">Daily Idling Fuel Wasted</div>
                     <div class="event-badge" style="background:#e0e7ff;"><i class="fa-solid fa-bolt"></i> Live Algorithmic Math</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View CRRI Math</button>
@@ -194,7 +178,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- 7-DAY TELEMETRY -->
@@ -203,7 +186,7 @@
             <div>
                 <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;"><i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Telemetry Summary</h3>
             </div>
-            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 30, 2026, 12:32 AM IST<!--/LAST_UPDATED--></span>
+            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 29, 2026, 11:59 PM IST<!--/LAST_UPDATED--></span>
         </div>
 
         <div class="weekly-grid">
@@ -213,7 +196,7 @@
                     <div class="weekly-flip-front">
                         <div>
                             <div class="extreme-sub" style="margin:0;">Total Gate Closures</div>
-                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->123<!--/WEEKLY_CLOSURES--> Times</div>
+                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->126<!--/WEEKLY_CLOSURES--> Times</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -249,7 +232,7 @@
                     <div class="weekly-flip-front">
                         <div>
                             <div class="extreme-sub" style="margin:0;">Vehicles Impacted</div>
-                            <div class="weekly-stat-val" style="color: var(--navy-primary);"><!--WEEKLY_VEHICLES-->1.83<!--/WEEKLY_VEHICLES--> Lakhs</div>
+                            <div class="weekly-stat-val" style="color: var(--navy-primary);"><!--WEEKLY_VEHICLES-->1.96<!--/WEEKLY_VEHICLES--> Lakhs</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -267,7 +250,7 @@
                     <div class="weekly-flip-front">
                         <div>
                             <div class="extreme-sub" style="margin:0;">Weekly Fuel Wasted</div>
-                            <div class="weekly-stat-val" style="color: var(--red-vibrant);"><!--WEEKLY_FUEL-->11,200<!--/WEEKLY_FUEL--> Liters</div>
+                            <div class="weekly-stat-val" style="color: var(--red-vibrant);"><!--WEEKLY_FUEL-->11,760<!--/WEEKLY_FUEL--> Liters</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -281,14 +264,14 @@
         </div>
         
         <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-            <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 12px 0;">Based on Indian Roads Congress guidelines (VOT @ ₹320/hr), today's estimated productivity loss is <strong>₹<!--DAILY_LOSS_LAKHS-->35.8<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 12px 0;">Based on Indian Roads Congress guidelines (VOT @ ₹320/hr), today's estimated productivity loss is <strong>₹<!--DAILY_LOSS_LAKHS-->29.1<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.</p>
             <div style="background: #f0fdf4; border-left: 4px solid var(--green-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark);">
                 <strong>Financial Conclusion:</strong> Combined fuel and time losses cost the state roughly ₹110 Crores annually. <strong>A ₹45 Cr ROB pays for itself in less than 5 months.</strong>
             </div>
         </div>
     </div>
 
-    <!-- ROB TIMELINE & STATUS (RESTORED) -->
+    <!-- ROB TIMELINE & STATUS -->
     <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> Official ROB Execution Timeline</div>
     <div class="card" style="margin-bottom: 32px;">
         <p style="font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 0;">
@@ -334,31 +317,49 @@
         </div>
     </div>
 
-    <!-- PETITION & DEMANDS -->
-    <div class="section-title"><i class="fa-solid fa-bullhorn text-amber-600"></i> Citizen Action</div>
+    <!-- CITIZEN ACTION CENTER (3-COLUMN) -->
+    <div class="section-title"><i class="fa-solid fa-bullhorn text-amber-600"></i> Citizen Action Center</div>
     
-    <div class="petition-box">
-        <div>
-            <span style="color: var(--amber-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase;">Active Campaign</span>
-            <h2 style="margin: 4px 0; font-size: 20px; color: var(--navy-dark); font-weight: 800;">Resolve Kaggadasapura Crisis</h2>
-            <p style="margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500;">Over 125 representations submitted by local associations.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 32px;">
+        
+        <!-- Column 1: Next Blockage -->
+        <div style="background: #e0e7ff; border: 1px solid #c7d2fe; border-top: 4px solid #4f46e5; border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                <i class="fa-solid fa-train-subway" style="font-size: 24px; color: #4f46e5;"></i>
+                <div style="font-size: 12px; color: #4f46e5; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;">Live Schedule Tracker</div>
+            </div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: auto;">
+                Next Scheduled Blockage:<br>
+                <strong style="color: #1e3a8a; font-size: 16px;"><!--NEXT_TRAIN-->Train 06526 (~07:15 PM)<!--/NEXT_TRAIN--></strong>
+            </div>
+            <div style="font-size: 10px; color: #6366f1; margin-top: 16px; line-height: 1.4; background: rgba(79, 70, 229, 0.1); padding: 8px; border-radius: 6px;">
+                <strong>Disclaimer:</strong> Best-effort estimate based on official timetables. Unscheduled freight trains and delays occur frequently. Always observe safety signals at the crossing.
+            </div>
         </div>
-        <a href="https://www.change.org/p/urgent-action-needed-resolve-kaggadasapura-railway-gate-traffic-crisis" target="_blank" class="btn-petition"><i class="fa-solid fa-pen-to-square"></i> Sign The Petition</a>
-    </div>
 
-    <div class="volunteer-box">
-        <div style="background: var(--blue-accent); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;"><i class="fa-solid fa-users"></i></div>
-        <div>
-            <h3 style="margin: 0 0 4px 0; color: var(--navy-dark); font-size: 16px;">Join the Citizen Ground Action Team</h3>
-            <p style="margin: 0 0 8px 0; font-size: 13px; color: var(--text-muted);">We need passionate residents to help coordinate with authorities and drive the ROB project forward.</p>
-            <div style="font-size: 14px; font-weight: 700; color: var(--navy-primary);">
-                <i class="fa-brands fa-whatsapp" style="margin-right: 4px; color: #25D366; font-size: 16px;"></i> Reach out to Shachi Pathak (Civic Volunteer) at 
-                <a href="tel:+917975684508" style="color: var(--blue-accent); text-decoration: none;">+91-797-568-4508</a>
+        <!-- Column 2: Petition -->
+        <div style="background: linear-gradient(135deg, #fffbe0 0%, #fef3c7 100%); border: 1px solid #fde047; border-top: 4px solid var(--amber-vibrant); border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
+            <div style="color: var(--amber-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 8px;">Active Campaign</div>
+            <h2 style="margin: 0 0 8px 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;">Resolve LC 136 Crisis</h2>
+            <p style="margin: 0 0 16px 0; font-size: 13px; color: var(--text-muted); font-weight: 500;">Over 125 representations submitted by local associations.</p>
+            <a href="https://www.change.org/p/urgent-action-needed-resolve-kaggadasapura-railway-gate-traffic-crisis" target="_blank" class="btn-petition" style="margin-top: auto; justify-content: center;"><i class="fa-solid fa-pen-to-square"></i> Sign Petition</a>
+        </div>
+
+        <!-- Column 3: Volunteer -->
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-top: 4px solid var(--blue-accent); border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
+             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                <div style="background: var(--blue-accent); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fa-solid fa-users"></i></div>
+                <div style="color: var(--blue-accent); font-weight: 800; font-size: 12px; text-transform: uppercase;">Ground Action Team</div>
+            </div>
+            <p style="margin: 0 0 12px 0; font-size: 13px; color: var(--text-muted);">We need passionate residents to coordinate with civic authorities.</p>
+            <div style="font-size: 13px; font-weight: 700; color: var(--navy-primary); margin-top: auto; background: white; padding: 10px; border-radius: 6px; border: 1px solid #bfdbfe; text-align: center;">
+                <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 16px;"></i> Reach out to Shachi Pathak<br>
+                <a href="tel:+917975684508" style="color: var(--blue-accent); text-decoration: none; display: inline-block; margin-top: 4px;">+91-797-568-4508</a>
             </div>
         </div>
     </div>
 
-    <!-- MILESTONE MOVED TO BOTTOM -->
+    <!-- MILESTONE (BOTTOM) -->
     <div class="achievement-card">
         <div style="background: var(--green-vibrant); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; margin-top: 2px;"><i class="fa-solid fa-check"></i></div>
         <div>

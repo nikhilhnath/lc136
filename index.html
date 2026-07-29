@@ -47,7 +47,7 @@
         
         .extreme-val { font-size: 34px; font-weight: 900; margin: 0; letter-spacing: -0.5px; display: flex; align-items: baseline; gap: 8px; }
         .normal-strike { font-size: 16px; text-decoration: line-through; color: var(--green-vibrant); font-weight: 700; opacity: 0.7; }
-        .extreme-sub { font-size: 13px; color: var(--navy-dark); font-weight: 700; margin-bottom: 8px; }
+        .extreme-sub { font-size: 13px; color: var(--navy-dark); font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
         
         .event-badge { font-size: 11px; background: #f1f5f9; color: var(--text-muted); padding: 4px 8px; border-radius: 6px; display: inline-block; font-weight: 700; border: 1px solid var(--border-color); }
 
@@ -83,7 +83,7 @@
         /* General UI components */
         .btn-petition { background: var(--navy-primary); color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; transition: background 0.2s; }
         .btn-petition:hover { background: var(--navy-dark); }
-        .achievement-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 16px 20px; margin-top: 32px; display: flex; align-items: flex-start; gap: 16px; }
+        .achievement-card { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; display: flex; align-items: flex-start; gap: 16px; }
     </style>
 </head>
 <body>
@@ -104,7 +104,7 @@
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
                 <div class="flip-card-front red">
-                    <div class="extreme-header"><span class="extreme-tag red">Peak Failure</span><i class="fa-solid fa-clock-stop text-red-600" style="color: var(--red-vibrant);"></i></div>
+                    <div class="extreme-header"><span class="extreme-tag red">Peak Failure</span><i class="fa-solid fa-hourglass-end" style="color: var(--red-vibrant);"></i></div>
                     <div class="extreme-val" style="color: var(--red-vibrant);"><!--MAX_DELAY-->65<!--/MAX_DELAY--> Mins <span class="normal-strike">4 Mins</span></div>
                     <div class="extreme-sub">Worst Single Transit Delay</div>
                     <div class="event-badge"><i class="fa-regular fa-calendar"></i> Recorded: <!--MAX_DELAY_DATE-->July 21, 2026<!--/MAX_DELAY_DATE--></div>
@@ -145,7 +145,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front amber">
                     <div class="extreme-header"><span class="extreme-tag amber">Pollution Peak</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->156<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
+                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->340<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
                     <div class="extreme-sub">Localized PM2.5 Hazard</div>
                     <div class="event-badge" style="background:#fffbe0;"><i class="fa-solid fa-bolt"></i> Live Daily Automated Fetch</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Environmental Source</button>
@@ -164,7 +164,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front indigo">
                     <div class="extreme-header"><span class="extreme-tag indigo">Resource Burn</span><i class="fa-solid fa-gas-pump" style="color: #4f46e5;"></i></div>
-                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->3,441<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
+                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->1,680<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
                     <div class="extreme-sub">Daily Idling Fuel Wasted</div>
                     <div class="event-badge" style="background:#e0e7ff;"><i class="fa-solid fa-bolt"></i> Live Algorithmic Math</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View CRRI Math</button>
@@ -186,7 +186,7 @@
             <div>
                 <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;"><i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Telemetry Summary</h3>
             </div>
-            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 30, 2026, 12:51 AM IST<!--/LAST_UPDATED--></span>
+            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 29, 2026, 11:59 PM IST<!--/LAST_UPDATED--></span>
         </div>
 
         <div class="weekly-grid">
@@ -195,8 +195,8 @@
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
                         <div>
-                            <div class="extreme-sub" style="margin:0;">Total Gate Closures</div>
-                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->123<!--/WEEKLY_CLOSURES--> Times</div>
+                            <div class="extreme-sub"><i class="fa-solid fa-road-barrier" style="color: var(--navy-primary);"></i> Total Gate Closures</div>
+                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->126<!--/WEEKLY_CLOSURES--> Times</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -213,7 +213,7 @@
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
                         <div>
-                            <div class="extreme-sub" style="margin:0;">Avg Delay / Closure</div>
+                            <div class="extreme-sub"><i class="fa-solid fa-stopwatch" style="color: var(--navy-primary);"></i> Avg Delay / Closure</div>
                             <div class="weekly-stat-val" style="color: var(--amber-vibrant);"><!--AVG_DELAY-->16.4<!--/AVG_DELAY--> Mins</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
@@ -231,8 +231,8 @@
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
                         <div>
-                            <div class="extreme-sub" style="margin:0;">Vehicles Impacted</div>
-                            <div class="weekly-stat-val" style="color: var(--navy-primary);"><!--WEEKLY_VEHICLES-->1.83<!--/WEEKLY_VEHICLES--> Lakhs</div>
+                            <div class="extreme-sub"><i class="fa-solid fa-car-side" style="color: var(--navy-primary);"></i> Vehicles Impacted</div>
+                            <div class="weekly-stat-val" style="color: var(--navy-primary);"><!--WEEKLY_VEHICLES-->1.96<!--/WEEKLY_VEHICLES--> Lakhs</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -249,8 +249,8 @@
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
                         <div>
-                            <div class="extreme-sub" style="margin:0;">Weekly Fuel Wasted</div>
-                            <div class="weekly-stat-val" style="color: var(--red-vibrant);"><!--WEEKLY_FUEL-->11,200<!--/WEEKLY_FUEL--> Liters</div>
+                            <div class="extreme-sub"><i class="fa-solid fa-oil-can" style="color: var(--navy-primary);"></i> Weekly Fuel Wasted</div>
+                            <div class="weekly-stat-val" style="color: var(--red-vibrant);"><!--WEEKLY_FUEL-->11,760<!--/WEEKLY_FUEL--> Liters</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -263,64 +263,26 @@
             </div>
         </div>
         
-        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-            <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 12px 0;">Based on Indian Roads Congress guidelines (VOT @ ₹320/hr), today's estimated productivity loss is <strong>₹<!--DAILY_LOSS_LAKHS-->35.8<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.</p>
+        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+            
+            <div style="background: #fef2f2; border: 1px solid #fca5a5; border-left: 4px solid var(--red-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark); margin-bottom: 12px;">
+                <strong style="color: var(--red-vibrant);">Daily Productivity Drain:</strong> Based on Indian Roads Congress guidelines (VOT @ ₹320/hr), today's estimated productivity loss is <strong>₹<!--DAILY_LOSS_LAKHS-->29.1<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.
+            </div>
+
             <div style="background: #f0fdf4; border-left: 4px solid var(--green-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark);">
                 <strong>Financial Conclusion:</strong> Combined fuel and time losses cost the state roughly ₹110 Crores annually. <strong>A ₹45 Cr ROB pays for itself in less than 5 months.</strong>
             </div>
-        </div>
-    </div>
 
-    <!-- ROB TIMELINE & STATUS -->
-    <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> Official ROB Execution Timeline</div>
-    <div class="card" style="margin-bottom: 32px;">
-        <p style="font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 0;">
-            Project sanctioned under the <strong>Bengaluru Suburban Rail Project (Corridor-4 / Kanaka Line)</strong> and South Western Railway (SWR) allocations.
-        </p>
-        
-        <div class="timeline">
-            <div class="timeline-event">
-                <div class="timeline-date">DECEMBER 22, 2025</div>
-                <div class="timeline-title">State Forwarding Order Issued</div>
-                <div style="font-size: 13px; color: var(--text-muted);">
-                    Karnataka Infrastructure Development Dept (Letter No. IDD 345 NSW 2025) officially directed SWR GM Hubballi to expedite execution of ROB at LC 136.
-                </div>
-            </div>
-
-            <div class="timeline-event">
-                <div class="timeline-date">JANUARY 2026</div>
-                <div class="timeline-title">Traffic Clearance Granted</div>
-                <div style="font-size: 13px; color: var(--text-muted);">
-                    DCP Traffic East granted formal traffic feasibility clearance for ROB design and diversion setup.
-                </div>
-            </div>
-
-            <div class="timeline-event">
-                <div class="timeline-date">MARCH 2026</div>
-                <div class="timeline-title">BBMP Civic Inspection</div>
-                <div style="font-size: 13px; color: var(--text-muted);">
-                    BBMP Chief Commissioner inspected LC 136 approach roads; ordered repair of footpaths and stormwater drain covers to aid pedestrian movement.
-                </div>
-            </div>
-
-            <div class="timeline-event">
-                <div class="timeline-date">JUNE 2026</div>
-                <div class="timeline-title">SWR Engineering Plan & Tender Phase</div>
-                <div style="font-size: 13px; color: var(--text-muted);">
-                    SWR Chief Engineer (Construction) confirmed GAD (General Arrangement Drawing) preparations actively in process with K-RIDE for tender invitation.
-                </div>
-            </div>
-        </div>
-        
-        <div style="font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 12px;">
-            <strong>Verification:</strong> Public Records & Official Communications from GoK, BBMP, and SWR.
+            <p style="font-size: 10px; color: var(--text-muted); margin: 8px 0 0 0; font-style: italic;">
+                *The ₹45 Crore ROB cost is an algorithmic estimate based on current urban civil engineering benchmarks and land acquisition inflation.
+            </p>
         </div>
     </div>
 
     <!-- CITIZEN ACTION CENTER (3-COLUMN) -->
     <div class="section-title"><i class="fa-solid fa-bullhorn text-amber-600"></i> Citizen Action Center</div>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 32px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
         
         <!-- Column 1: Next Blockage -->
         <div style="background: #e0e7ff; border: 1px solid #c7d2fe; border-top: 4px solid #4f46e5; border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
@@ -330,7 +292,7 @@
             </div>
             <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: auto;">
                 Next Scheduled Blockage:<br>
-                <strong style="color: #1e3a8a; font-size: 16px;"><!--NEXT_TRAIN-->[Unscheduled Freight / Night Shunting] (~02:30 AM)<!--/NEXT_TRAIN--></strong>
+                <strong style="color: #1e3a8a; font-size: 16px;"><!--NEXT_TRAIN-->Train 06526 (~07:15 PM)<!--/NEXT_TRAIN--></strong>
             </div>
             <div style="font-size: 10px; color: #6366f1; margin-top: 16px; line-height: 1.4; background: rgba(79, 70, 229, 0.1); padding: 8px; border-radius: 6px;">
                 <strong>Disclaimer:</strong> Best-effort estimate based on official timetables. Unscheduled freight trains and delays occur frequently. Always observe safety signals at the crossing.
@@ -359,7 +321,7 @@
         </div>
     </div>
 
-    <!-- MILESTONE (BOTTOM) -->
+    <!-- MILESTONE -->
     <div class="achievement-card">
         <div style="background: var(--green-vibrant); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; margin-top: 2px;"><i class="fa-solid fa-check"></i></div>
         <div>
@@ -367,6 +329,54 @@
             <div style="font-size: 13px; color: #15803d; margin-top: 2px;">
                 Following persistent community representations, <strong>flexible lane dividers</strong> have been successfully installed on the approach roads!
             </div>
+        </div>
+    </div>
+
+    <!-- ROB TIMELINE & STATUS -->
+    <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> LC 136 History & Official ROB Timeline</div>
+    <div class="card" style="margin-bottom: 32px;">
+        <p style="font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 0;">
+            Compiled from public records, BBMP Tree Expert Committee reports, and official K-RIDE tender documents tracing the Baiyyappanahalli-Hosur track doubling and Corridor-4 (Kanaka Line).
+        </p>
+        
+        <div class="timeline">
+            
+            <div class="timeline-event">
+                <div class="timeline-date">JUNE 2026</div>
+                <div class="timeline-title">Land Acquisition & Alignment Review</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    K-RIDE Managing Director confirms private land acquisition for Corridor-4 is nearing completion, backed by successful review missions from the European Investment Bank (EIB) and KfW (German Development Bank).
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">MAY 2025</div>
+                <div class="timeline-title">Corridor 4 ROB Tender Process</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    K-RIDE officially floats tenders for the design and construction of Road Over Bridges (ROBs) and Road Under Bridges (RUBs) along the Corridor-4 section (Heelalige to Benniganahalli) intersecting with the Kaggadasapura layout.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">JANUARY 2025</div>
+                <div class="timeline-title">BBMP Environmental Clearance</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    The BBMP Tree Expert Committee (TEC) publishes its report clearing the embankment alignment for Kaggadasapura Station and the associated ROB-524A structure near LC 136.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">2019 &mdash; 2022</div>
+                <div class="timeline-title">BSRP Approval & Track Doubling</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    RITES Ltd. completes the Techno-Economic Feasibility study for the 159 km Bengaluru Suburban Rail Project. SWR simultaneously accelerates the Baiyyappanahalli-Hosur track doubling project, massively increasing train frequency through Kaggadasapura.
+                </div>
+            </div>
+            
+        </div>
+        
+        <div style="font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 12px;">
+            <strong>Verification Sources:</strong> K-RIDE "Samparka" Newsletters, South Western Railway Tenders, and BBMP TEC Public Notices.
         </div>
     </div>
 

@@ -1,21 +1,26 @@
 name: Midnight Dashboard Updater
 
-# Triggers the robot at 18:29 UTC (which is exactly 11:59 PM IST)
 on:
   schedule:
     - cron: '29 18 * * *'
-  workflow_dispatch: # Allows manual trigger button
+  workflow_dispatch: 
+
+# THIS GIVES THE ROBOT PERMISSION TO SAVE FILES (Fixes Exit Code 128)
+permissions:
+  contents: write
 
 jobs:
   update-dashboard:
     runs-on: ubuntu-latest
 
     steps:
+      # Upgraded to v4 (Fixes Node.js warning)
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
+      # Upgraded to v5 (Fixes Node.js warning)
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -30,5 +35,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "Civic Tracker Bot"
           git add index.html memory.json
-          git commit -m "Automated 11:59 PM Data Update" || exit 0
+          git commit -m "Automated Data Update" || exit 0
           git push

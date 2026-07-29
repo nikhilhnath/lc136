@@ -1,4 +1,3 @@
-```python
 import json
 import os
 import datetime
@@ -121,4 +120,3 @@ with open('index.html', 'w', encoding='utf-8') as f:
     f.write(html)
 
 print(f"Robot successfully ran for {replacements['LAST_UPDATED']}!")
-```

@@ -89,6 +89,23 @@ trains = [
     (20, 45, "Train 16220 - Tirupati Express"),
     (22, 10, "[Unscheduled Freight / Night Shunting]")
 ]
+
+next_train = trains[0] 
+found = False
+
+# Find the very next train today
+for h, m, name in trains:
+    if now.hour < h or (now.hour == h and now.minute <= m):
+        next_train = (h, m, name)
+        found = True
+        break
+
+# If it's 11 PM, the next train is tomorrow's first train
+if not found:
+    next_train = trains[0]
+
+time_str = datetime.datetime.strptime(f"{next_train[0]}:{next_train[1]}", "%H:%M").strftime("%I:%M %p")
+train_display = f"{next_train[2]} (~{time_str})"
 next_train = trains[0] # Default to next morning
 for h, m, name in trains:
     if now.hour < h or (now.hour == h and now.minute <= m):

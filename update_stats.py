@@ -90,7 +90,7 @@ trains = [
     (22, 10, "[Unscheduled Freight / Night Shunting]")
 ]
 
-next_train = trains[0] 
+next_train = trains[0]
 found = False
 
 # Find the very next train today
@@ -100,17 +100,9 @@ for h, m, name in trains:
         found = True
         break
 
-# If it's 11 PM, the next train is tomorrow's first train
+# If it's late night and no more trains today, default to tomorrow's first train
 if not found:
     next_train = trains[0]
-
-time_str = datetime.datetime.strptime(f"{next_train[0]}:{next_train[1]}", "%H:%M").strftime("%I:%M %p")
-train_display = f"{next_train[2]} (~{time_str})"
-next_train = trains[0] # Default to next morning
-for h, m, name in trains:
-    if now.hour < h or (now.hour == h and now.minute <= m):
-        next_train = (h, m, name)
-        break
 
 time_str = datetime.datetime.strptime(f"{next_train[0]}:{next_train[1]}", "%H:%M").strftime("%I:%M %p")
 train_display = f"{next_train[2]} (~{time_str})"
@@ -131,8 +123,8 @@ replacements = {
     "NEXT_TRAIN": train_display,
     "WEEKLY_CLOSURES": str((19 * 5) + (14 * 2)),
     "AVG_DELAY": "16.4",
-    "WEEKLY_VEHICLES": "1.83",
-    "WEEKLY_FUEL": "11,200",
+    "WEEKLY_VEHICLES": "1.96",
+    "WEEKLY_FUEL": "11,760",
     "DAILY_LOSS_LAKHS": str(daily_loss)
 }
 

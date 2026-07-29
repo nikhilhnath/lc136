@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
             --bg-main: #f1f5f9; --bg-card: #ffffff; --border-color: #cbd5e1;
             --navy-primary: #1e3a8a; --navy-dark: #0f172a; --blue-accent: #0284c7;
             --red-vibrant: #dc2626; --amber-vibrant: #d97706; --green-vibrant: #16a34a;
-            --text-main: #0f172a; --text-muted: #475569;
+            --text-main: #0f172a; --text-muted: #475569; --text-light: #64748b;
         }
 
         * { box-sizing: border-box; }
@@ -28,7 +27,7 @@
         .train-tracker-icon { font-size: 24px; color: #4f46e5; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* 3D Flip Cards */
+        /* 3D Flip Cards - EXTREME METRICS */
         .grid-extreme { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
         .flip-card { background-color: transparent; height: 260px; perspective: 1000px; cursor: pointer; }
         .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.6s; transform-style: preserve-3d; }
@@ -63,8 +62,28 @@
         /* Weekly Summary */
         .weekly-summary { background: #ffffff; border: 2px solid var(--border-color); border-radius: 14px; padding: 22px; margin-bottom: 32px; }
         .weekly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 16px; }
-        .weekly-stat-box { background: #f8fafc; border: 1px solid var(--border-color); border-left: 4px solid var(--navy-primary); border-radius: 8px; padding: 16px; }
+        
+        /* 3D Flip Cards - WEEKLY STATS */
+        .weekly-flip-card { background-color: transparent; height: 160px; perspective: 1000px; cursor: pointer; }
+        .weekly-flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.6s; transform-style: preserve-3d; }
+        .weekly-flip-card.flipped .weekly-flip-card-inner { transform: rotateY(180deg); }
+        .weekly-flip-front, .weekly-flip-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        .weekly-flip-front { background: #f8fafc; border: 1px solid var(--border-color); border-left: 4px solid var(--navy-primary); }
+        .weekly-flip-back { background: var(--navy-dark); color: white; transform: rotateY(180deg); border: 2px solid var(--navy-primary); }
         .weekly-stat-val { font-size: 26px; font-weight: 800; color: var(--navy-dark); margin-top: 4px; }
+        .weekly-flip-back h4 { margin: 0 0 6px 0; color: #93c5fd; font-size: 13px; font-weight: 800; }
+        .weekly-flip-back p { font-size: 12px; color: #e2e8f0; margin: 0; line-height: 1.4; }
+        
+        .tap-hint { font-size: 11px; color: var(--blue-accent); font-weight: 700; display: flex; align-items: center; gap: 4px; margin-top: auto; }
+
+        /* Timeline Styles (RESTORED) */
+        .card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); }
+        .timeline { position: relative; padding-left: 20px; border-left: 3px solid var(--navy-primary); margin: 20px 0; }
+        .timeline-event { position: relative; margin-bottom: 24px; padding-left: 16px; }
+        .timeline-event::before { content: ''; position: absolute; left: -28px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--navy-primary); border: 3px solid #ffffff; }
+        .timeline-date { font-size: 12px; color: var(--navy-primary); font-weight: 800; }
+        .timeline-title { font-size: 16px; font-weight: 800; color: var(--navy-dark); margin: 2px 0 4px 0; }
 
         /* Petitions & Milestones */
         .petition-box { background: linear-gradient(135deg, #fffbe0 0%, #fef3c7 100%); border: 2px solid var(--amber-vibrant); border-radius: 14px; padding: 24px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
@@ -188,21 +207,76 @@
         </div>
 
         <div class="weekly-grid">
-            <div class="weekly-stat-box">
-                <div class="extreme-sub" style="margin:0;">Total Gate Closures</div>
-                <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->126<!--/WEEKLY_CLOSURES--> Times</div>
+            <!-- Weekly Box 1 -->
+            <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="weekly-flip-card-inner">
+                    <div class="weekly-flip-front">
+                        <div>
+                            <div class="extreme-sub" style="margin:0;">Total Gate Closures</div>
+                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->126<!--/WEEKLY_CLOSURES--> Times</div>
+                        </div>
+                        <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
+                    </div>
+                    <div class="weekly-flip-back">
+                        <h4>Calculation Source</h4>
+                        <p>Aggregated from SWR published suburban passenger timetables combined with average daily freight/goods passages.</p>
+                        <div class="tap-hint" style="color:#93c5fd; margin-top:auto;"><i class="fa-solid fa-rotate-left"></i> Tap to flip</div>
+                    </div>
+                </div>
             </div>
-            <div class="weekly-stat-box">
-                <div class="extreme-sub" style="margin:0;">Avg Delay / Closure</div>
-                <div class="weekly-stat-val" style="color: var(--amber-vibrant);"><!--AVG_DELAY-->16.4<!--/AVG_DELAY--> Mins</div>
+
+            <!-- Weekly Box 2 -->
+            <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="weekly-flip-card-inner">
+                    <div class="weekly-flip-front">
+                        <div>
+                            <div class="extreme-sub" style="margin:0;">Avg Delay / Closure</div>
+                            <div class="weekly-stat-val" style="color: var(--amber-vibrant);"><!--AVG_DELAY-->16.4<!--/AVG_DELAY--> Mins</div>
+                        </div>
+                        <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
+                    </div>
+                    <div class="weekly-flip-back">
+                        <h4>Calculation Source</h4>
+                        <p>Calculated via TomTom API historical baselines combined for both Kaggadasapura and Mahadevapura approach roads.</p>
+                        <div class="tap-hint" style="color:#93c5fd; margin-top:auto;"><i class="fa-solid fa-rotate-left"></i> Tap to flip</div>
+                    </div>
+                </div>
             </div>
-            <div class="weekly-stat-box">
-                <div class="extreme-sub" style="margin:0;">Vehicles Impacted</div>
-                <div class="weekly-stat-val" style="color: var(--navy-primary);"><!--WEEKLY_VEHICLES-->1.96<!--/WEEKLY_VEHICLES--> Lakhs</div>
+
+            <!-- Weekly Box 3 -->
+            <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="weekly-flip-card-inner">
+                    <div class="weekly-flip-front">
+                        <div>
+                            <div class="extreme-sub" style="margin:0;">Vehicles Impacted</div>
+                            <div class="weekly-stat-val" style="color: var(--navy-primary);"><!--WEEKLY_VEHICLES-->1.96<!--/WEEKLY_VEHICLES--> Lakhs</div>
+                        </div>
+                        <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
+                    </div>
+                    <div class="weekly-flip-back">
+                        <h4>Calculation Source</h4>
+                        <p>Based on localized BBMP / DULT traffic volume counts (approximating ~28,000 daily passage rate).</p>
+                        <div class="tap-hint" style="color:#93c5fd; margin-top:auto;"><i class="fa-solid fa-rotate-left"></i> Tap to flip</div>
+                    </div>
+                </div>
             </div>
-            <div class="weekly-stat-box">
-                <div class="extreme-sub" style="margin:0;">Weekly Fuel Wasted</div>
-                <div class="weekly-stat-val" style="color: var(--red-vibrant);"><!--WEEKLY_FUEL-->11,760<!--/WEEKLY_FUEL--> Liters</div>
+
+            <!-- Weekly Box 4 -->
+            <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="weekly-flip-card-inner">
+                    <div class="weekly-flip-front">
+                        <div>
+                            <div class="extreme-sub" style="margin:0;">Weekly Fuel Wasted</div>
+                            <div class="weekly-stat-val" style="color: var(--red-vibrant);"><!--WEEKLY_FUEL-->11,760<!--/WEEKLY_FUEL--> Liters</div>
+                        </div>
+                        <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
+                    </div>
+                    <div class="weekly-flip-back">
+                        <h4>Calculation Source</h4>
+                        <p>Standard CRRI formula (0.4L/hr avg burn rate) applied strictly to total weekly vehicle volume and delay time.</p>
+                        <div class="tap-hint" style="color:#93c5fd; margin-top:auto;"><i class="fa-solid fa-rotate-left"></i> Tap to flip</div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -211,6 +285,52 @@
             <div style="background: #f0fdf4; border-left: 4px solid var(--green-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark);">
                 <strong>Financial Conclusion:</strong> Combined fuel and time losses cost the state roughly ₹110 Crores annually. <strong>A ₹45 Cr ROB pays for itself in less than 5 months.</strong>
             </div>
+        </div>
+    </div>
+
+    <!-- ROB TIMELINE & STATUS (RESTORED) -->
+    <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> Official ROB Execution Timeline</div>
+    <div class="card" style="margin-bottom: 32px;">
+        <p style="font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 0;">
+            Project sanctioned under the <strong>Bengaluru Suburban Rail Project (Corridor-4 / Kanaka Line)</strong> and South Western Railway (SWR) allocations.
+        </p>
+        
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="timeline-date">DECEMBER 22, 2025</div>
+                <div class="timeline-title">State Forwarding Order Issued</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    Karnataka Infrastructure Development Dept (Letter No. IDD 345 NSW 2025) officially directed SWR GM Hubballi to expedite execution of ROB at LC 136.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">JANUARY 2026</div>
+                <div class="timeline-title">Traffic Clearance Granted</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    DCP Traffic East granted formal traffic feasibility clearance for ROB design and diversion setup.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">MARCH 2026</div>
+                <div class="timeline-title">BBMP Civic Inspection</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    BBMP Chief Commissioner inspected LC 136 approach roads; ordered repair of footpaths and stormwater drain covers to aid pedestrian movement.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">JUNE 2026</div>
+                <div class="timeline-title">SWR Engineering Plan & Tender Phase</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    SWR Chief Engineer (Construction) confirmed GAD (General Arrangement Drawing) preparations actively in process with K-RIDE for tender invitation.
+                </div>
+            </div>
+        </div>
+        
+        <div style="font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 12px;">
+            <strong>Verification:</strong> Public Records & Official Communications from GoK, BBMP, and SWR.
         </div>
     </div>
 

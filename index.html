@@ -44,9 +44,20 @@
         h1 { font-size: 28px; color: var(--navy-dark); margin: 4px 0; font-weight: 800; letter-spacing: -0.5px; }
         .section-title { font-size: 20px; color: var(--navy-dark); font-weight: 800; margin: 32px 0 16px 0; display: flex; align-items: center; gap: 8px; }
 
-        /* --- FLIP CARD GRID SYSTEM (Used for Extreme Metrics & Impacts) --- */
-        .grid-extreme { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
-        .flip-card { background-color: transparent; height: 260px; perspective: 1000px; cursor: pointer; }
+        /* --- FLIP CARD GRID SYSTEM --- */
+        .grid-extreme { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 16px; 
+            margin-bottom: 24px; 
+        }
+        .flip-card { 
+            background-color: transparent; 
+            width: 100%;
+            height: 260px; 
+            perspective: 1000px; 
+            cursor: pointer; 
+        }
         .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.6s; transform-style: preserve-3d; }
         .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
         
@@ -57,7 +68,7 @@
             display: flex; flex-direction: column; justify-content: space-between; 
         }
         
-        /* Front of Cards (Dynamic colors based on metric type) */
+        /* Front of Cards */
         .flip-card-front { background: var(--bg-card); border-top: 5px solid; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .flip-card-front.red { border-top-color: var(--red-vibrant); }
         .flip-card-front.amber { border-top-color: var(--amber-vibrant); }
@@ -68,13 +79,13 @@
         .flip-card-front.cyan { border-top-color: #0891b2; }
         .flip-card-front.green { border-top-color: var(--green-vibrant); }
         
-        /* Back of Cards (Methodology/Math views) */
+        /* Back of Cards */
         .flip-card-back { background: var(--navy-dark); color: white; transform: rotateY(180deg); border: 2px solid var(--navy-primary); }
         .flip-card-back h4 { margin: 0 0 8px 0; color: #93c5fd; font-size: 14px; }
         .flip-card-back p { font-size: 12px; color: #e2e8f0; margin: 0 0 8px 0; }
         .math-box { background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-family: monospace; font-size: 11px; color: #bae6fd; margin-bottom: 8px; border: 1px solid #1e3a8a; white-space: normal; }
 
-        /* Card Typography & Badges */
+        /* Card Typography */
         .extreme-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
         .extreme-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
         .extreme-tag.red { background: #fee2e2; color: var(--red-vibrant); }
@@ -91,16 +102,25 @@
         .extreme-sub { font-size: 13px; color: var(--navy-dark); font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
         .event-badge { font-size: 11px; background: #f1f5f9; color: var(--text-muted); padding: 4px 8px; border-radius: 6px; display: inline-block; font-weight: 700; border: 1px solid var(--border-color); }
 
-        /* Card Interactive Buttons */
         .btn-drill { background: #f8fafc; border: 1px solid var(--border-color); color: var(--blue-accent); font-size: 12px; font-weight: 700; cursor: pointer; padding: 8px; border-radius: 6px; width: 100%; text-align: center; }
         .btn-drill-back { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); font-size: 12px; font-weight: 700; padding: 8px; border-radius: 6px; width: 100%; cursor: pointer; margin-top: auto; }
 
         /* --- WEEKLY SUMMARY SECTION --- */
         .weekly-summary { background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 14px; padding: 22px; margin-bottom: 32px; }
-        .weekly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 16px; }
+        .weekly-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); 
+            gap: 16px; 
+            margin-top: 16px; 
+        }
         
-        /* Weekly Flip Cards (Smaller format) */
-        .weekly-flip-card { background-color: transparent; height: 160px; perspective: 1000px; cursor: pointer; }
+        .weekly-flip-card { 
+            background-color: transparent; 
+            width: 100%;
+            height: 160px; 
+            perspective: 1000px; 
+            cursor: pointer; 
+        }
         .weekly-flip-card-inner { position: relative; width: 100%; height: 100%; text-align: left; transition: transform 0.6s; transform-style: preserve-3d; }
         .weekly-flip-card.flipped .weekly-flip-card-inner { transform: rotateY(180deg); }
         .weekly-flip-front, .weekly-flip-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -187,7 +207,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front amber">
                     <div class="extreme-header"><span class="extreme-tag amber">Pollution Peak</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->164<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
+                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->340<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
                     <div class="extreme-sub">Localized PM2.5 Hazard</div>
                     <div class="event-badge" style="background:#fffbe0;"><i class="fa-solid fa-calculator"></i> Algorithmic Estimate</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Environmental Source</button>
@@ -201,12 +221,12 @@
             </div>
         </div>
 
-        <!-- Metric: Fuel Resource Burn (Hooked to Python via comments) -->
+        <!-- Metric: Fuel Resource Burn -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
                 <div class="flip-card-front indigo">
                     <div class="extreme-header"><span class="extreme-tag indigo">Resource Burn</span><i class="fa-solid fa-gas-pump" style="color: #4f46e5;"></i></div>
-                    <div class="extreme-val" style="color: #4f46e5;"><span id="fuel-val"><!--DAILY_FUEL-->3,441<!--/DAILY_FUEL--></span> L <span class="normal-strike">0 L</span></div>
+                    <div class="extreme-val" style="color: #4f46e5;"><span id="fuel-val"><!--DAILY_FUEL-->1,680<!--/DAILY_FUEL--></span> L <span class="normal-strike">0 L</span></div>
                     <div class="extreme-sub">Daily Idling Fuel Wasted</div>
                     <div class="event-badge" style="background:#e0e7ff;"><i class="fa-solid fa-bolt"></i> Live Algorithmic Math</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View CRRI Math</button>
@@ -227,7 +247,7 @@
     
     <div class="grid-extreme">
         
-        <!-- Impact A: Carbon Tonnage (Values calculated via JavaScript sync function below) -->
+        <!-- Impact A: Carbon Tonnage -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
                 <div class="flip-card-front teal">
@@ -247,7 +267,7 @@
             </div>
         </div>
 
-        <!-- Impact B: Emergency Services / Golden Hour -->
+        <!-- Impact B: Emergency Services -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
                 <div class="flip-card-front rose">
@@ -266,7 +286,7 @@
             </div>
         </div>
 
-        <!-- Impact C: Throughput Inefficiency vs SWR Trains -->
+        <!-- Impact C: Throughput Inefficiency -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
                 <div class="flip-card-front slate">
@@ -274,104 +294,74 @@
                     <div class="extreme-val" style="color: #475569;">2,500 <span style="font-size: 20px; font-weight: 700;">:</span> 1</div>
                     <div class="extreme-sub">Commuters Halted per Freight</div>
                     <div class="event-badge"><i class="fa-solid fa-train-tram"></i> Infrastructure Audit</div>
-                    <butt    <div class="grid-extreme">
-        <!-- CARD 1: DELAY -->
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-                <div class="flip-card-front red">
-                    <div class="extreme-header"><span class="extreme-tag red">Peak Failure</span><i class="fa-solid fa-hourglass-end" style="color: var(--red-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--red-vibrant);"><!--MAX_DELAY-->65<!--/MAX_DELAY--> Mins <span class="normal-strike">4 Mins</span></div>
-                    <div class="extreme-sub">Worst Single Transit Delay</div>
-                    <div class="event-badge"><i class="fa-regular fa-calendar"></i> Recorded: <!--MAX_DELAY_DATE-->July 21, 2026<!--/MAX_DELAY_DATE--></div>
-                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Telemetry Source</button>
+                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Audit Logic</button>
                 </div>
                 <div class="flip-card-back">
-                    <h4>Consecutive Train Bunching</h4>
-                    <p>Occurs when an express passenger train and a slow freight train enter the block back-to-back.</p>
-                    <div class="math-box">Clearance = 22m (Gate) + 43m (Queue) = 65 Mins</div>
-                    <p style="opacity: 0.8; font-size: 10px;">Verified via Google Maps Travel Time Index.</p>
+                    <h4>Throughput Imbalance</h4>
+                    <p>Halting thousands of mixed urban road commuters across multiple intersections to facilitate the passage of a single, non-scheduled goods/freight train carrying zero commercial passengers.</p>
+                    <div class="math-box">Ratio: DULT Volumes vs SWR Utility</div>
                     <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
                 </div>
             </div>
         </div>
 
-        <!-- CARD 2: QUEUE -->
+        <!-- Impact D: Public Transport Delays -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
-                <div class="flip-card-front red">
-                    <div class="extreme-header"><span class="extreme-tag red">Spillover Radius</span><i class="fa-solid fa-route" style="color: var(--red-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--red-vibrant);"><!--MAX_QUEUE-->3.4<!--/MAX_QUEUE--> Km <span class="normal-strike">150 m</span></div>
-                    <div class="extreme-sub">Max Queue Tailback Length</div>
-                    <div class="event-badge"><i class="fa-regular fa-calendar"></i> Recorded: <!--MAX_QUEUE_DATE-->July 21, 2026<!--/MAX_QUEUE_DATE--></div>
-                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Spatial Impact</button>
+                <div class="flip-card-front cyan">
+                    <div class="extreme-header"><span class="extreme-tag cyan">Public Transit</span><i class="fa-solid fa-bus" style="color: #0891b2;"></i></div>
+                    <div class="extreme-val" style="color: #0891b2;">400+ <span style="font-size: 16px; margin-left: 4px;">Hrs</span></div>
+                    <div class="extreme-sub">Daily Passenger-Hours Lost</div>
+                    <div class="event-badge"><i class="fa-solid fa-users-line"></i> Transport Estimate</div>
+                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Capacity Math</button>
                 </div>
                 <div class="flip-card-back">
-                    <h4>4-Way Gridlock Propagation</h4>
-                    <p>Stationary traffic spills back past Vignanagar main market and cascades into ORR connecting corridors.</p>
-                    <div class="math-box">Affected = Kaggadasapura + Vignanagar + C.V. Raman Nagar</div>
-                    <p style="opacity: 0.8; font-size: 10px;">Sourced from TomTom Congestion Telemetry.</p>
+                    <h4>BMTC Network Degradation</h4>
+                    <p>Estimated by taking the frequency of designated BMTC bus routes crossing the Kaggadasapura/Vignanagar congestion zone, multiplied by an average 40-passenger occupancy delayed during peak scheduled closures.</p>
+                    <div class="math-box">Routes × Occupancy × Delay Time</div>
+                    <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Impact E: Non-Motorized Transport -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="border-top-color: #16a34a;">
+                    <div class="extreme-header"><span class="extreme-tag green">NMT Hazard</span><i class="fa-solid fa-children" style="color: #16a34a;"></i></div>
+                    <div class="extreme-val" style="color: #16a34a;">High <span style="font-size: 16px; margin-left: 4px;">Risk</span></div>
+                    <div class="extreme-sub">Vulnerable User Exposure</div>
+                    <div class="event-badge" style="background:#f0fdf4;"><i class="fa-solid fa-school"></i> Geographic Proximity Estimate</div>
+                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Audit Disclaimer</button>
+                </div>
+                <div class="flip-card-back">
+                    <h4>Pedestrian / Student Intersect</h4>
+                    <p>High volume of Non-Motorized Transport (NMT) users, including primary and secondary students, forced to navigate directly through idling heavy vehicle exhaust and gridlock.</p>
+                    <div class="math-box" style="white-space: normal;">*Disclaimer: Derived via geographic density of adjacent educational institutions. Not a manual physical headcount.</div>
                     <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
                 </div>
             </div>
         </div>
 
-        <!-- CARD 3: AQI -->
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-                <div class="flip-card-front amber">
-                    <div class="extreme-header"><span class="extreme-tag amber">Pollution Peak</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->164<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
-                    <div class="extreme-sub">Localized PM2.5 Hazard</div>
-                    <div class="event-badge" style="background:#fffbe0;"><i class="fa-solid fa-calculator"></i> Algorithmic Estimate</div>
-                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Environmental Source</button>
-                </div>
-                <div class="flip-card-back">
-                    <h4>Micro-Climate Degradation</h4>
-                    <p>Concentrated exhaust fumes from idling vehicles under zero-wind conditions raise localized PM2.5.</p>
-                    <div class="math-box">Model: Open-Meteo API + CRRI Exhaust Multipliers</div>
-                    <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 4: FUEL -->
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-                <div class="flip-card-front indigo">
-                    <div class="extreme-header"><span class="extreme-tag indigo">Resource Burn</span><i class="fa-solid fa-gas-pump" style="color: #4f46e5;"></i></div>
-                    <div class="extreme-val" style="color: #4f46e5;"><!--DAILY_FUEL-->3,441<!--/DAILY_FUEL--> L <span class="normal-strike">0 L</span></div>
-                    <div class="extreme-sub">Daily Idling Fuel Wasted</div>
-                    <div class="event-badge" style="background:#e0e7ff;"><i class="fa-solid fa-bolt"></i> Live Algorithmic Math</div>
-                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View CRRI Math</button>
-                </div>
-                <div class="flip-card-back">
-                    <h4>CRRI Idling Formula</h4>
-                    <p>Burn rates per idling vehicle (Central Road Research Institute): Cars (0.6 L/hr), 2W (0.2 L/hr).</p>
-                    <div class="math-box">Weighted Avg Burn = 0.40 L / Veh-Hr</div>
-                    <p style="opacity: 0.8; font-size: 10px;">Calculated dynamically based on weekday/weekend volume.</p>
-                    <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <!-- 7-DAY TELEMETRY -->
+    <!-- SECTION 3: 7-DAY HISTORICAL TELEMETRY -->
     <div class="weekly-summary">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <div>
                 <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;"><i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Telemetry Summary</h3>
             </div>
-            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 30, 2026, 02:01 PM IST<!--/LAST_UPDATED--></span>
+            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 29, 2026, 11:59 PM IST<!--/LAST_UPDATED--></span>
         </div>
 
         <div class="weekly-grid">
-            <!-- Weekly Box 1 -->
+            <!-- Telemetry: Closures -->
             <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
                         <div>
                             <div class="extreme-sub"><i class="fa-solid fa-road-barrier" style="color: var(--navy-primary);"></i> Total Gate Closures</div>
-                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->123<!--/WEEKLY_CLOSURES--> Times</div>
+                            <div class="weekly-stat-val"><!--WEEKLY_CLOSURES-->126<!--/WEEKLY_CLOSURES--> Times</div>
                         </div>
                         <div class="tap-hint"><i class="fa-solid fa-rotate"></i> View Source</div>
                     </div>
@@ -383,7 +373,7 @@
                 </div>
             </div>
 
-            <!-- Weekly Box 2 -->
+            <!-- Telemetry: Avg Delay -->
             <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
@@ -401,7 +391,7 @@
                 </div>
             </div>
 
-            <!-- Weekly Box 3 -->
+            <!-- Telemetry: Vehicles Delayed -->
             <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
@@ -419,7 +409,7 @@
                 </div>
             </div>
 
-            <!-- Weekly Box 4 -->
+            <!-- Telemetry: Total Fuel Lost -->
             <div class="weekly-flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="weekly-flip-card-inner">
                     <div class="weekly-flip-front">
@@ -438,10 +428,10 @@
             </div>
         </div>
         
+        <!-- Financial Projection Footer -->
         <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-            
             <div style="background: #fef2f2; border: 1px solid #fca5a5; border-left: 4px solid var(--red-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark); margin-bottom: 12px;">
-                <strong style="color: var(--red-vibrant);">Daily Productivity Drain:</strong> Based on IRC:SP:30 guidelines (weighted Value of Time @ ₹320/hr for mixed urban traffic), today's estimated economic loss is <strong>₹<!--DAILY_LOSS_LAKHS-->35.8<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.
+                <strong style="color: var(--red-vibrant);">Daily Productivity Drain:</strong> Based on IRC:SP:30 guidelines (weighted Value of Time @ ₹320/hr for mixed urban traffic), today's estimated economic loss is <strong>₹<!--DAILY_LOSS_LAKHS-->29.1<!--/DAILY_LOSS_LAKHS--> Lakhs</strong>.
             </div>
 
             <div style="background: #f0fdf4; border-left: 4px solid var(--green-vibrant); padding: 12px; border-radius: 4px; font-size: 13px; color: var(--navy-dark);">
@@ -454,12 +444,12 @@
         </div>
     </div>
 
-    <!-- CITIZEN ACTION CENTER (3-COLUMN) -->
+    <!-- SECTION 4: CITIZEN ACTION CENTER -->
     <div class="section-title"><i class="fa-solid fa-bullhorn text-amber-600"></i> Citizen Action Center</div>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
         
-        <!-- Column 1: Next Blockage (Dynamic JS Tracker) -->
+        <!-- Action Hub: Live Tracker -->
         <div style="background: #e0e7ff; border: 1px solid #c7d2fe; border-top: 4px solid #4f46e5; border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
                 <i class="fa-solid fa-train-subway" style="font-size: 24px; color: #4f46e5;"></i>
@@ -467,68 +457,84 @@
             </div>
             <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: auto;">
                 Next Scheduled Blockage:<br>
-                <strong id="next-train-display" style="color: #1e3a8a; font-size: 16px;"><!--NEXT_TRAIN-->Train 12677 - Ernakulam Intercity (~03:20 PM)<!--/NEXT_TRAIN--></strong>
+                <strong id="next-train-display" style="color: #1e3a8a; font-size: 16px;">Calculating...</strong>
             </div>
             <div style="font-size: 10px; color: #6366f1; margin-top: 16px; line-height: 1.4; background: rgba(79, 70, 229, 0.1); padding: 8px; border-radius: 6px;">
                 <strong>Disclaimer:</strong> Best-effort estimate based on official timetables. Freight slots are statistical placeholders representing average weekly line density. Always observe safety signals at crossing.
             </div>
         </div>
 
-        <!-- Column 2: Petition -->
-        <div style="background: linear-gradient(135deg, #fffbe0 0%, #fef3c7 100%); border: 1px solid #fde047; border-top: 4px solid var(--amber-vibrant); border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
-            <div style="color: var(--amber-vibrant); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 8px;">Active Campaign</div>
-            <h2 style="margin: 0 0 8px 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;">Resolve LC 136 Crisis</h2>
-            <p style="margin: 0 0 16px 0; font-size: 13px; color: var(--text-muted); font-weight: 500;">Over 125 representations submitted by local associations.</p>
-            <a href="https://www.change.org/p/urgent-action-needed-resolve-kaggadasapura-railway-gate-traffic-crisis" target="_blank" class="btn-petition" style="margin-top: auto; justify-content: center;"><i class="fa-solid fa-pen-to-square"></i> Sign Petition</a>
+        <!-- Action Hub: Change.org Petition -->
+        <div style="background: linear-gradient(135deg, #fefce8 100%, #fef9c3 0%); border: 2px solid #facc15; border-top: 5px solid var(--amber-vibrant); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(217, 119, 6, 0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <div style="color: var(--amber-vibrant); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">Active Campaign</div>
+                <span style="font-size: 10px; background: #fef08a; color: #854d0e; padding: 2px 6px; border-radius: 4px; font-weight: 700;">High Priority</span>
+            </div>
+            <h2 style="margin: 0 0 6px 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;">Resolve LC 136 Crisis</h2>
+            <p style="margin: 0 0 16px 0; font-size: 13px; color: var(--text-muted); font-weight: 500;">Amplified by 125+ formal local association representations & soaring petition momentum.</p>
+            <a href="https://www.change.org/p/urgent-action-needed-resolve-kaggadasapura-railway-gate-traffic-crisis" target="_blank" class="btn-petition" style="margin-top: auto; justify-content: center;"><i class="fa-solid fa-pen-to-square"></i> Sign & Support Petition</a>
         </div>
 
-        <!-- Column 3: Volunteer -->
+        <!-- Action Hub: WhatsApp Contact Links -->
         <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-top: 4px solid var(--blue-accent); border-radius: 12px; padding: 20px; display: flex; flex-direction: column;">
              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
                 <div style="background: var(--blue-accent); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fa-solid fa-users"></i></div>
                 <div style="color: var(--blue-accent); font-weight: 800; font-size: 12px; text-transform: uppercase;">Ground Action Team</div>
             </div>
-            <p style="margin: 0 0 12px 0; font-size: 13px; color: var(--text-muted);">We need passionate residents to coordinate with civic authorities.</p>
-            <div style="font-size: 13px; font-weight: 700; color: var(--navy-primary); margin-top: auto; background: white; padding: 10px; border-radius: 6px; border: 1px solid #bfdbfe; text-align: center;">
-                <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 16px;"></i> Reach out to Shachi Pathak<br>
-                <a href="tel:+917975684508" style="color: var(--blue-accent); text-decoration: none; display: inline-block; margin-top: 4px;">+91-797-568-4508</a>
+            <p style="margin: 0 0 12px 0; font-size: 13px; color: var(--text-muted);">Connect with Shachi Pathak to coordinate resident actions and updates.</p>
+            
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+                <a href="https://wa.me/message/OCGC2CMG3EVXO1" target="_blank" style="background: #25D366; color: white; padding: 9px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 15px;"></i> Chat with Shachi on WhatsApp
+                </a>
+                <a href="https://chat.whatsapp.com/DQoRIGvGEiKLjoRIPDpPl8" target="_blank" style="background: var(--navy-primary); color: white; padding: 9px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s;">
+                    <i class="fa-solid fa-user-group" style="font-size: 13px;"></i> Join Campaign Updates Group
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- MILESTONE -->
+    <!-- SECTION 5: ADVOCACY MILESTONES -->
     <div class="achievement-card">
         <div style="background: var(--green-vibrant); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; margin-top: 2px;"><i class="fa-solid fa-check"></i></div>
         <div>
             <div style="font-weight: 800; color: #166534; font-size: 14px;">CITIZEN ADVOCACY MILESTONE ACHIEVED</div>
             <div style="font-size: 13px; color: #15803d; margin-top: 2px;">
-                Following persistent community representations, <strong>flexible lane dividers</strong> have been successfully installed on the approach roads!
+                Following persistent community representations, <strong>flexible lane dividers</strong> and <strong>footpath drain covers</strong> have been successfully repaired and installed, ensuring safe walking routes for school children!
             </div>
         </div>
     </div>
 
-    <!-- ROB TIMELINE & STATUS -->
-    <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> LC 136 History & Official Project Timeline</div>
+    <!-- SECTION 6: CHRONOLOGICAL PROJECT TIMELINE -->
+    <div class="section-title"><i class="fa-solid fa-timeline text-blue-600"></i> LC 136 Chronology & Official Project Audit</div>
     <div class="card" style="margin-bottom: 32px;">
         <p style="font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 0;">
-            A neutral retrospective chronicle of administrative milestones, technical evaluations, and infrastructure planning compiled from public records and tender disclosures.
+            A neutral retrospective chronicle of administrative milestones, technical evaluations, and infrastructure planning compiled exclusively from official public records, statutory project sanctions, and K-RIDE tender disclosures.
         </p>
         
         <div class="timeline">
             
             <div class="timeline-event">
-                <div class="timeline-date">JUNE 2026</div>
-                <div class="timeline-title">Land Acquisition & Corridor-4 Progress</div>
+                <div class="timeline-date">JULY 2026</div>
+                <div class="timeline-title">Phased Commissioning & Review</div>
                 <div style="font-size: 13px; color: var(--text-muted);">
-                    K-RIDE confirms private land acquisition for BSRP Corridor-4 is nearing final stages, supported by multi-lateral review missions from the European Investment Bank (EIB).
+                    Ongoing administrative and financial reviews of the 48-km track doubling works note phased project commissioning targets extending into 2027, with total utilized project outlays reported at approximately ₹688.8 crore.
                 </div>
             </div>
 
             <div class="timeline-event">
-                <div class="timeline-date">DECEMBER 2025</div>
-                <div class="timeline-title">Community Representations & Escalation</div>
+                <div class="timeline-date">MAY 13, 2026</div>
+                <div class="timeline-title">Corridor-4 Tender Publication</div>
                 <div style="font-size: 13px; color: var(--text-muted);">
-                    As regional track doubling works intensify traffic density at LC 136, resident coalitions initiate formal petition campaigns and interface directly with the Hon. Chief Minister for priority resolution.
+                    K-RIDE formally publishes comprehensive e-procurement tender documents for the civil design and construction of grade separators (Road Over Bridges / Road Under Bridges) in lieu of level crossings across the Corridor-4 alignment.
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">OCTOBER 2025</div>
+                <div class="timeline-title">State-Level Civic Representations</div>
+                <div style="font-size: 13px; color: var(--text-muted);">
+                    Local resident coalitions and community associations formally present detailed congestion impact data to the Hon. Deputy Chief Minister and Zonal BBMP authorities to request priority alignment for LC 136 infrastructure integration.
                 </div>
             </div>
 
@@ -536,7 +542,7 @@
                 <div class="timeline-date">JANUARY 2024</div>
                 <div class="timeline-title">Project Execution Transfer to K-RIDE</div>
                 <div style="font-size: 13px; color: var(--text-muted);">
-                    Administrative responsibility for the 48-km Baiyyappanahalli-Hosur track doubling project is officially consolidated under K-RIDE to streamline unified infrastructure integration.
+                    Administrative and execution responsibility for the Baiyyappanahalli-Hosur track doubling project is officially consolidated under K-RIDE to streamline regional implementation and align with the broader Bengaluru Suburban Railway Project (BSRP).
                 </div>
             </div>
 
@@ -544,41 +550,47 @@
                 <div class="timeline-date">2020</div>
                 <div class="timeline-title">Technical Review: RUB to ROB Redesign</div>
                 <div style="font-size: 13px; color: var(--text-muted);">
-                    Engineering evaluations address severe local waterlogging and lake-bed seepage risks associated with the original Road Under Bridge (RUB) proposal, necessitating a comprehensive redesign to a Road Over Bridge (ROB).
+                    Geotechnical engineering evaluations address severe local waterlogging and underlying lake-bed seepage risks associated with the original Road Under Bridge (RUB) proposal, necessitating a comprehensive technical redesign to a Road Over Bridge (ROB).
                 </div>
             </div>
 
-             <div class="timeline-event">
-                <div class="timeline-date">2016</div>
-                <div class="timeline-title">Initial Alignment & Property Impact Assessment</div>
+            <div class="timeline-event">
+                <div class="timeline-date">2018 - 2019</div>
+                <div class="timeline-title">Track Doubling Official Sanction</div>
                 <div style="font-size: 13px; color: var(--text-muted);">
-                    Preliminary alignment surveys identify approximately 93 property parcels required for grade separation, initiating long-term administrative feasibility reviews.
+                    The Railway Board officially sanctions the 48-km track doubling project between Baiyyappanahalli and Hosur at an initial estimated outlay of ₹498.7 crore, initiating a projected increase in regional train frequency.
                 </div>
             </div>
 
             <div class="timeline-event">
                 <div class="timeline-date">2012</div>
-                <div class="timeline-title">Initial Administrative Project Clearance</div>
+                <div class="timeline-title">Initial Administrative Clearance</div>
                 <div style="font-size: 13px; color: var(--text-muted);">
-                    The Central Government and Railway Ministry issue initial administrative approval for grade separation at Kaggadasapura Level Crossing LC 136.
+                    South Western Railway (SWR) and central authorities grant initial administrative project sanction for the Kaggadasapura LC 136 grade separation at an estimated cost of ₹31 crore under a standard municipal cost-sharing model.
                 </div>
             </div>
             
         </div>
         
         <div style="font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 12px;">
-            <strong>Verification Sources:</strong> Right to Information (RTI) Disclosures, Public Works Documentation, and K-RIDE Tender Archives.
+            <strong>Verification Sources:</strong> Right to Information (RTI) Disclosures, Public Works Documentation, Ministry of Railways Sanction Reports, and K-RIDE e-Procurement Archives.
         </div>
     </div>
 
-    <!-- CYA LEGAL / ADVOCACY FOOTER -->
-    <div style="text-align: center; padding: 20px; font-size: 11px; color: var(--text-light); border-top: 1px solid var(--border-color); margin-top: 40px;">
-        <p style="margin: 0 0 4px 0;"><strong>Notice & Disclaimer:</strong> This dashboard is an independent civic advocacy tool created by local residents. All congestion metrics, fuel models, and economic productivity losses are predictive estimates calculated using standard CRRI formulas and IRC:SP:30 guidelines. Not affiliated with SWR, BBMP, or K-RIDE.</p>
+    <!-- SECTION 7: CYA LEGAL FOOTER -->
+    <div style="text-align: center; padding: 24px 20px; font-size: 10px; color: var(--text-light); border-top: 2px solid var(--border-color); margin-top: 40px; background-color: #f8fafc; border-radius: 8px;">
+        <p style="margin: 0 0 8px 0; font-size: 11px; color: var(--navy-dark);"><strong>Notice of Independence & Data Disclaimer</strong></p>
+        <p style="margin: 0 0 6px 0; line-height: 1.6;">
+            This dashboard is an independent, non-commercial civic advocacy tool created by local residents. It is <strong>not affiliated with, endorsed by, or representing</strong> the South Western Railway (SWR), Bruhat Bengaluru Mahanagara Palike (BBMP), K-RIDE, Directorate of Urban Land Transport (DULT), Bengaluru Metropolitan Transport Corporation (BMTC), the Ministry of Environment, Forest and Climate Change (MoEFCC), or any other governmental, municipal, or corporate entity. All organizational names, transit routes, and infrastructure project titles are referenced solely for geographic identification and historical project context.
+        </p>
+        <p style="margin: 0; line-height: 1.6;">
+            All congestion metrics, environmental impact models (including CO<sub>2</sub> and AQI estimates), throughput ratios, and economic productivity losses presented are <strong>predictive algorithmic estimates</strong> calculated using standard publicly available formulas (such as CRRI parameters and IRC:SP:30 guidelines) combined with geographic proximity modeling. They are intended for community advocacy illustration and do not constitute official governmental census data.
+        </p>
     </div>
 
 </div>
 
-<!-- CLIENT-SIDE DYNAMIC NEXT TRAIN CALCULATOR -->
+<!-- CLIENT-SIDE DYNAMIC JAVASCRIPT SCRIPTS -->
 <script>
     function updateNextTrain() {
         const trains = [
@@ -599,7 +611,6 @@
             {h: 22, m: 10, name: "[Unscheduled Freight / Night Shunting]"}
         ];
 
-        // Fetch exact current hour and minute in IST timezone
         const now = new Date();
         const formatter = new Intl.DateTimeFormat('en-US', {
             timeZone: 'Asia/Kolkata',
@@ -615,7 +626,7 @@
             if (p.type === 'minute') currentMinute = parseInt(p.value, 10);
         });
 
-        let next = trains[0];
+        let next = trains[0]; 
         for (let t of trains) {
             if (currentHour < t.h || (currentHour === t.h && currentMinute <= t.m)) {
                 next = t;
@@ -623,18 +634,45 @@
             }
         }
 
-        // Format to 12-hour AM/PM string
         let period = next.h >= 12 ? 'PM' : 'AM';
         let hour12 = next.h % 12;
         if (hour12 === 0) hour12 = 12;
         let minStr = String(next.m).padStart(2, '0');
         let timeStr = `${hour12}:${minStr} ${period}`;
 
-        document.getElementById('next-train-display').innerText = `${next.name} (~${timeStr})`;
+        let displayEl = document.getElementById('next-train-display');
+        if(displayEl) {
+            displayEl.innerText = `${next.name} (~${timeStr})`;
+        }
     }
 
-    // Run on page load
-    window.onload = updateNextTrain;
+    function updateCO2() {
+        try {
+            let fuelElement = document.getElementById('fuel-val');
+            if(!fuelElement) return;
+            
+            let fuelText = fuelElement.innerText || "1680";
+            let fuelNumber = parseFloat(fuelText.replace(/,/g, ''));
+            
+            if (!isNaN(fuelNumber)) {
+                let co2Kg = fuelNumber * 2.3;
+                let co2Tons = (co2Kg / 1000).toFixed(2); 
+                let numFormat = new Intl.NumberFormat('en-US');
+                
+                document.getElementById('co2-val').innerText = "~" + co2Tons;
+                document.getElementById('co2-math-fuel').innerText = numFormat.format(fuelNumber);
+                document.getElementById('co2-math-kg').innerText = numFormat.format(Math.round(co2Kg));
+                document.getElementById('co2-math-tons').innerText = co2Tons;
+            }
+        } catch (e) {
+            console.error("CO2 sync failed", e);
+        }
+    }
+
+    window.onload = function() {
+        updateNextTrain();
+        updateCO2();
+    };
 </script>
 
 </body>

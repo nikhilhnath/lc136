@@ -19,20 +19,20 @@ else:
     with open(memory_file, 'r') as f:
         memory = json.load(f)
 
-# Algorithmic Traffic Simulation (Traffic varies based on Weekday/Weekend)
+# Algorithmic Traffic Simulation (Adjusted for EEFC / Police Enforcement Baseline)
 is_weekday = now.weekday() < 5
 if is_weekday:
-    today_delay = 45 # Standard peak failure 
-    today_queue = 2.2
-    daily_vehicles = 29500
-    closures = 34 # Updated for new 34-slot schedule
-    avg_delay = 17.5
-else:
-    today_delay = 25 # Lighter weekend traffic
+    today_delay = 18 # Enforced EEFC traffic peak
     today_queue = 1.1
+    daily_vehicles = 29500
+    closures = 34 
+    avg_delay = 8.5
+else:
+    today_delay = 10 # Lighter weekend traffic
+    today_queue = 0.6
     daily_vehicles = 18000
-    closures = 34 # Updated for new 34-slot schedule
-    avg_delay = 13.0
+    closures = 34 
+    avg_delay = 5.0
 
 daily_fuel = int(daily_vehicles * (avg_delay / 60) * 0.40)
 daily_loss = round((daily_vehicles * 1.3 * (avg_delay / 60) * 320) / 100000, 1)
@@ -141,9 +141,9 @@ replacements = {
     "DAILY_FUEL": f"{daily_fuel:,}",
     "NEXT_TRAIN": train_display,
     "WEEKLY_CLOSURES": str((34 * 5) + (34 * 2)), # Dynamically totals 238 closures per week
-    "AVG_DELAY": "16.4",
+    "AVG_DELAY": str(avg_delay),
     "WEEKLY_VEHICLES": "1.96",
-    "WEEKLY_FUEL": "11,760",
+    "WEEKLY_FUEL": f"{(daily_fuel * 7):,}",
     "DAILY_LOSS_LAKHS": str(daily_loss)
 }
 

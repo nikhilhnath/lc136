@@ -25,13 +25,13 @@ if is_weekday:
     today_delay = 45 # Standard peak failure 
     today_queue = 2.2
     daily_vehicles = 29500
-    closures = 19
+    closures = 34 # Updated for new 34-slot schedule
     avg_delay = 17.5
 else:
     today_delay = 25 # Lighter weekend traffic
     today_queue = 1.1
     daily_vehicles = 18000
-    closures = 14
+    closures = 34 # Updated for new 34-slot schedule
     avg_delay = 13.0
 
 daily_fuel = int(daily_vehicles * (avg_delay / 60) * 0.40)
@@ -71,23 +71,42 @@ try:
 except:
     aqi = 310 # Fallback
 
-# 3. NEXT TRAIN LOGIC (BYPL to HSRA Block)
+# 3. NEXT TRAIN LOGIC (BYPL to HSRA Block - Updated Volunteer Schedule)
 trains = [
-    (2, 30, "[Unscheduled Freight / Night Shunting]"),
-    (5, 15, "Train 06259 - Yesvantpur Hosur Pass"),
-    (6, 40, "Train 16219 - Chamarajanagar Exp"),
-    (7, 15, "Train 06525 - KSR Bengaluru Exp"),
-    (8, 20, "[Unscheduled Freight / Goods Block]"),
-    (9, 30, "Train 12257 - Kochuveli Garib Rath"),
-    (11, 10, "Train 11013 - Coimbatore Express"),
-    (12, 45, "Train 06260 - Hosur Passenger"),
+    (3, 30, "Train 11022 - Dadar Express"),
+    (4, 30, "Train 16231 - Tanjavoor Express"),
+    (5, 30, "Train 16235 - Tuticorin Express"),
+    (6, 0, "Train 16528 - Kannur Express"),
+    (6, 45, "Train 12677 - ERS Intercity"),
+    (7, 0, "Train 6591 - Y-H MEMU"),
+    (7, 45, "Train 66582 - DPJ MEMU"),
+    (8, 0, "Train 16529 - Karaikal Express"),
+    (8, 40, "Train 17236 - Nagercoil Express"),
+    (9, 0, "Train 12258 - Garib Rath"),
+    (9, 15, "Train 6592 - Y-H MEMU"),
+    (10, 0, "Train 16212 - Salem Express"),
+    (10, 30, "Train 7356 - Rameswaram Express"),
+    (11, 30, "Train 66583 - Y-H MEMU"),
+    (13, 0, "Train 20642 - BNC-VB (Vande Bharat)"),
     (14, 0, "[Unscheduled Freight / Goods Block]"),
-    (15, 20, "Train 12677 - Ernakulam Intercity"),
-    (17, 30, "Train 12678 - Ernakulam Intercity"),
-    (18, 15, "Train 16529 - Karaikal Express"),
-    (19, 15, "Train 06526 - KSR Bengaluru Exp"),
-    (20, 45, "Train 16220 - Tirupati Express"),
-    (22, 10, "[Unscheduled Freight / Night Shunting]")
+    (14, 35, "Train 20641 - CBE-VB (Vande Bharat)"),
+    (15, 0, "Train 11014 - Kurla Express"),
+    (15, 10, "Train 7355 - Rameswaram Express"),
+    (15, 40, "Train 66585 - Y-H MEMU"),
+    (16, 20, "Train 66584 - Y-H MEMU"),
+    (16, 40, "Train 16211 - Salem Express"),
+    (17, 30, "Train 17235 - Nagercoil Express"),
+    (18, 30, "Train 66586 - Y-H MEMU"),
+    (19, 30, "Train 12678 - ERS Intercity"),
+    (19, 40, "Train 66587 - DPJ MEMU"),
+    (19, 45, "Train 16322 - Tanjavoor Express"),
+    (20, 45, "Train 16527 - Kannur Express"),
+    (21, 15, "Train 16530 - Karaikal Express"),
+    (21, 30, "Train 12257 - Garib Rath"),
+    (21, 45, "Train 16236 - Tuticorin Express"),
+    (22, 15, "Train 11021 - Dadar Express"),
+    (22, 30, "Train 11013 - Kurla Express"),
+    (23, 30, "[Unscheduled Freight / Night Shunting]")
 ]
 
 next_train = trains[0]
@@ -121,7 +140,7 @@ replacements = {
     "LIVE_AQI": str(aqi),
     "DAILY_FUEL": f"{daily_fuel:,}",
     "NEXT_TRAIN": train_display,
-    "WEEKLY_CLOSURES": str((19 * 5) + (14 * 2)),
+    "WEEKLY_CLOSURES": str((34 * 5) + (34 * 2)), # Dynamically totals 238 closures per week
     "AVG_DELAY": "16.4",
     "WEEKLY_VEHICLES": "1.96",
     "WEEKLY_FUEL": "11,760",

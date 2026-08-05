@@ -209,7 +209,7 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front amber">
                     <div class="extreme-header"><span class="extreme-tag amber">Pollution Peak</span><i class="fa-solid fa-wind" style="color: var(--amber-vibrant);"></i></div>
-                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->156<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
+                    <div class="extreme-val" style="color: var(--amber-vibrant);"><!--LIVE_AQI-->164<!--/LIVE_AQI--> AQI <span class="normal-strike">90 AQI</span></div>
                     <div class="extreme-sub">Localized PM2.5 Hazard</div>
                     <div class="event-badge" style="background:#fffbe0;"><i class="fa-solid fa-calculator"></i> Algorithmic Estimate</div>
                     <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Environmental Source</button>
@@ -268,20 +268,20 @@
             </div>
         </div>
 
-        <!-- Impact 2: Pedestrian Hazard -->
+        <!-- Impact 2: School Impact -->
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
                 <div class="flip-card-front" style="border-top-color: #16a34a;">
-                    <div class="extreme-header"><span class="extreme-tag green">Pedestrian Hazard</span><i class="fa-solid fa-children" style="color: #16a34a;"></i></div>
-                    <div class="extreme-val" style="color: #16a34a;">High <span style="font-size: 16px; margin-left: 4px;">Risk</span></div>
-                    <div class="extreme-sub">Vulnerable Pedestrian Exposure</div>
-                    <div class="event-badge" style="background:#f0fdf4;"><i class="fa-solid fa-school"></i> Geographic Proximity Estimate</div>
-                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View Audit Disclaimer</button>
+                    <div class="extreme-header"><span class="extreme-tag green">School Impact</span><i class="fa-solid fa-school" style="color: #16a34a;"></i></div>
+                    <div class="extreme-val" style="color: #16a34a;">12,000+ <span style="font-size: 16px; margin-left: 4px;">Minors</span></div>
+                    <div class="extreme-sub">Children in Active Spillover Zone</div>
+                    <div class="event-badge" style="background:#f0fdf4;"><i class="fa-solid fa-map-location-dot"></i> 1.5km Proximity Radius</div>
+                    <button class="btn-drill"><i class="fa-solid fa-rotate"></i> View School Audit Math</button>
                 </div>
                 <div class="flip-card-back">
-                    <h4>Pedestrian / Student Intersect</h4>
-                    <p>High volume of pedestrians, including primary and secondary students, forced to navigate directly through idling heavy vehicle exhaust and gridlock.</p>
-                    <div class="math-box" style="white-space: normal;">*Disclaimer: Derived via geographic density of adjacent educational institutions. Not a manual physical headcount.</div>
+                    <h4>Vulnerable User Intersect</h4>
+                    <p>Estimated capacity of major institutions trapped in the LC 136 gridlock zone, including KV DRDO, Shishya BEML, Geethanjali, NCFE, Sri Chaitanya, Narayana, SSRVM, Good Samaritan, and local Govt. schools.</p>
+                    <div class="math-box" style="white-space: normal;">*Disclaimer: Proximity-based guesstimate derived from aggregating average school capacities within a 1.5km radius. Not an official physical headcount.</div>
                     <button class="btn-drill-back"><i class="fa-solid fa-rotate-left"></i> Tap to flip</button>
                 </div>
             </div>
@@ -334,7 +334,7 @@
             <div>
                 <h3 style="margin: 0; font-size: 18px; color: var(--navy-dark); font-weight: 800;"><i class="fa-solid fa-calendar-week" style="color: var(--navy-primary);"></i> Past 7 Days Telemetry Summary</h3>
             </div>
-            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->August 05, 2026, 04:03 AM IST<!--/LAST_UPDATED--></span>
+            <span style="font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px; font-weight: 700; color: var(--navy-dark);">Auto-Updated: <!--LAST_UPDATED-->July 30, 2026, 02:28 PM IST<!--/LAST_UPDATED--></span>
         </div>
 
         <div class="weekly-grid">
@@ -443,7 +443,7 @@
                 <strong id="next-train-display" style="color: #1e3a8a; font-size: 16px;">Calculating...</strong>
             </div>
             <div style="font-size: 10px; color: #6366f1; margin-top: 16px; line-height: 1.4; background: rgba(79, 70, 229, 0.1); padding: 8px; border-radius: 6px;">
-                <strong>Disclaimer:</strong> Best-effort estimate based on official timetables. Freight slots are statistical placeholders representing average weekly line density. Always observe safety signals at crossing.
+                <strong>Disclaimer:</strong> Best-effort estimate based on official timetables and resident-verified schedules. Freight slots are statistical placeholders representing average weekly line density. Always observe safety signals at crossing.
             </div>
         </div>
 
@@ -581,21 +581,40 @@
 <script>
     function updateNextTrain() {
         const trains = [
-            {h: 2, m: 30, name: "[Unscheduled Freight / Night Shunting]"},
-            {h: 5, m: 15, name: "Train 06259 - Yesvantpur Hosur Pass"},
-            {h: 6, m: 40, name: "Train 16219 - Chamarajanagar Exp"},
-            {h: 7, m: 15, name: "Train 06525 - KSR Bengaluru Exp"},
-            {h: 8, m: 20, name: "[Unscheduled Freight / Goods Block]"},
-            {h: 9, m: 30, name: "Train 12257 - Kochuveli Garib Rath"},
-            {h: 11, m: 10, name: "Train 11013 - Coimbatore Express"},
-            {h: 12, m: 45, name: "Train 06260 - Hosur Passenger"},
+            {h: 3, m: 30, name: "Train 11022 - Dadar Express"},
+            {h: 4, m: 30, name: "Train 16231 - Tanjavoor Express"},
+            {h: 5, m: 30, name: "Train 16235 - Tuticorin Express"},
+            {h: 6, m: 0, name: "Train 16528 - Kannur Express"},
+            {h: 6, m: 45, name: "Train 12677 - ERS Intercity"},
+            {h: 7, m: 0, name: "Train 6591 - Y-H MEMU"},
+            {h: 7, m: 45, name: "Train 66582 - DPJ MEMU"},
+            {h: 8, m: 0, name: "Train 16529 - Karaikal Express"},
+            {h: 8, m: 40, name: "Train 17236 - Nagercoil Express"},
+            {h: 9, m: 0, name: "Train 12258 - Garib Rath"},
+            {h: 9, m: 15, name: "Train 6592 - Y-H MEMU"},
+            {h: 10, m: 0, name: "Train 16212 - Salem Express"},
+            {h: 10, m: 30, name: "Train 7356 - Rameswaram Express"},
+            {h: 11, m: 30, name: "Train 66583 - Y-H MEMU"},
+            {h: 13, m: 0, name: "Train 20642 - BNC-VB (Vande Bharat)"},
             {h: 14, m: 0, name: "[Unscheduled Freight / Goods Block]"},
-            {h: 15, m: 20, name: "Train 12677 - Ernakulam Intercity"},
-            {h: 17, m: 30, name: "Train 12678 - Ernakulam Intercity"},
-            {h: 18, m: 15, name: "Train 16529 - Karaikal Express"},
-            {h: 19, m: 15, name: "Train 06526 - KSR Bengaluru Exp"},
-            {h: 20, m: 45, name: "Train 16220 - Tirupati Express"},
-            {h: 22, m: 10, name: "[Unscheduled Freight / Night Shunting]"}
+            {h: 14, m: 35, name: "Train 20641 - CBE-VB (Vande Bharat)"},
+            {h: 15, m: 0, name: "Train 11014 - Kurla Express"},
+            {h: 15, m: 10, name: "Train 7355 - Rameswaram Express"},
+            {h: 15, m: 40, name: "Train 66585 - Y-H MEMU"},
+            {h: 16, m: 20, name: "Train 66584 - Y-H MEMU"},
+            {h: 16, m: 40, name: "Train 16211 - Salem Express"},
+            {h: 17, m: 30, name: "Train 17235 - Nagercoil Express"},
+            {h: 18, m: 30, name: "Train 66586 - Y-H MEMU"},
+            {h: 19, m: 30, name: "Train 12678 - ERS Intercity"},
+            {h: 19, m: 40, name: "Train 66587 - DPJ MEMU"},
+            {h: 19, m: 45, name: "Train 16322 - Tanjavoor Express"},
+            {h: 20, m: 45, name: "Train 16527 - Kannur Express"},
+            {h: 21, m: 15, name: "Train 16530 - Karaikal Express"},
+            {h: 21, m: 30, name: "Train 12257 - Garib Rath"},
+            {h: 21, m: 45, name: "Train 16236 - Tuticorin Express"},
+            {h: 22, m: 15, name: "Train 11021 - Dadar Express"},
+            {h: 22, m: 30, name: "Train 11013 - Kurla Express"},
+            {h: 23, m: 30, name: "[Unscheduled Freight / Night Shunting]"}
         ];
 
         const now = new Date();
